@@ -1,0 +1,609 @@
+{
+  "bookings": [
+    {
+      "name": "Marian",
+      "id": "B-0001",
+      "orderDate": "03/15/2022",
+      "checkIn": "03/20/2022",
+      "checkOut": "03/25/2022",
+      "room": "R-0001",
+      "specialRequest": "No smoking room"
+    },
+    {
+      "name": "Martha Garcia",
+      "id": "B-0002",
+      "orderDate": "05/01/2023",
+      "checkIn": "05/10/2023",
+      "checkOut": "05/15/2023",
+      "room": "R-0005",
+      "specialRequest": "Early check-in, please"
+    },
+    {
+      "name": "Bob Smith",
+      "id": "B-0003",
+      "orderDate": "06/20/2022",
+      "checkIn": "06/25/2022",
+      "checkOut": "06/30/2022",
+      "room": "R-0007",
+      "specialRequest": "Early check-in, please"
+    },
+    {
+      "name": "Emily Davis",
+      "id": "B-0004",
+      "orderDate": "09/01/2022",
+      "checkIn": "09/10/2022",
+      "checkOut": "09/15/2022",
+      "room": "R-0008",
+      "specialRequest": "Ocean view preferred"
+    },
+    {
+      "name": "David Lee",
+      "id": "B-0005",
+      "orderDate": "07/10/2023",
+      "checkIn": "07/15/2023",
+      "checkOut": "07/20/2023",
+      "room": "R-0006",
+      "specialRequest": "Late check-out, please"
+    },
+    {
+      "name": "Sophia Brown",
+      "id": "B-0006",
+      "orderDate": "08/15/2022",
+      "checkIn": "08/20/2022",
+      "checkOut": "08/25/2022",
+      "room": "R-0003",
+      "specialRequest": "Extra blankets, please"
+    },
+    {
+      "name": "Oliver Garcia",
+      "id": "B-0007",
+      "orderDate": "11/01/2022",
+      "checkIn": "11/10/2022",
+      "checkOut": "11/15/2022",
+      "room": "R-0003",
+      "specialRequest": "Quiet room, please"
+    },
+    {
+      "name": "William Jones",
+      "id": "B-0008",
+      "orderDate": "10/01/2023",
+      "checkIn": "10/10/2023",
+      "checkOut": "10/15/2023",
+      "room": "R-0008",
+      "specialRequest": "Room with balcony preferred"
+    },
+    {
+      "name": "Ava Hernandez",
+      "id": "B-0009",
+      "orderDate": "04/20/2022",
+      "checkIn": "05/25/2023",
+      "checkOut": "05/30/2023",
+      "room": "R-0008",
+      "specialRequest": "Extra towels, please"
+    },
+    {
+      "name": "Mia Wilson",
+      "id": "B-0010",
+      "orderDate": "03/01/2022",
+      "checkIn": "03/10/2022",
+      "checkOut": "03/15/2022",
+      "room": "R-0002",
+      "specialRequest": ""
+    },
+    {
+      "name": "Ethan Taylor",
+      "id": "B-0011",
+      "orderDate": "04/15/2022",
+      "checkIn": "04/20/2022",
+      "checkOut": "04/25/2022",
+      "room": "R-0001",
+      "specialRequest": "Extra pillows, please"
+    },
+    {
+      "name": "Charlotte Anderson",
+      "id": "B-0012",
+      "orderDate": "04/01/2023",
+      "checkIn": "04/18/2023",
+      "checkOut": "04/20/2023",
+      "room": "R-0004",
+      "specialRequest": "Early check-in, please"
+    }
+  ],
+  "contacts": [
+    {
+      "date": "05/04/2023 12:30:00",
+      "archived": true,
+      "customer": {
+        "name": "Ana Garcia",
+        "phone": "555-123-4567",
+        "email": "ana.garcia@example.com"
+      },
+      "id": "C-0001",
+      "subject": "Noisy room",
+      "comment": "My stay at the hotel was not as pleasant as I had hoped due to the constant noise coming from outside my room. It made it difficult to get a good night's sleep."
+    },
+    {
+      "date": "05/03/2023 15:45:00",
+      "archived": true,
+      "customer": {
+        "name": "John Smith",
+        "phone": "555-987-6543",
+        "email": "john.smith@example.com"
+      },
+      "id": "C-0002",
+      "subject": "Great service",
+      "comment": "I had a wonderful experience at the hotel. The staff were very friendly and helpful, and went out of their way to make sure I had everything I needed. I would definitely stay here again!"
+    },
+    {
+      "date": "05/02/2023 08:00:00",
+      "archived": true,
+      "customer": {
+        "name": "Emily Brown",
+        "phone": "555-555-5555",
+        "email": "emily.brown@example.com"
+      },
+      "id": "C-0003",
+      "subject": "Clean and comfortable",
+      "comment": "The room was very clean and comfortable, and I appreciated the attention to detail. The hotel overall was well-maintained and had a nice atmosphere."
+    },
+    {
+      "date": "05/01/2023 19:20:00",
+      "archived": false,
+      "customer": {
+        "name": "David Rodriguez",
+        "phone": "555-111-2222",
+        "email": "david.rodriguez@example.com"
+      },
+      "id": "C-0004",
+      "subject": "Late check-in",
+      "comment": "I arrived at the hotel later than expected, and was disappointed to find that there was no one available at the front desk to check me in. I had to wait for almost an hour before someone finally arrived."
+    },
+    {
+      "date": "04/30/2023 10:15:00",
+      "archived": false,
+      "customer": {
+        "name": "Sarah Kim",
+        "phone": "555-333-4444",
+        "email": "sarah.kim@example.com"
+      },
+      "id": "C-0005",
+      "subject": "Poor breakfast",
+      "comment": "The breakfast at the hotel was not up to par. The food was cold and tasteless, and there was not much variety to choose from. I would recommend looking elsewhere for breakfast."
+    },
+    {
+      "date": "04/29/2023 13:00:00",
+      "archived": true,
+      "customer": {
+        "name": "Michael Chen",
+        "phone": "555-777-8888",
+        "email": "michael.chen@example.com"
+      },
+      "id": "C-0006",
+      "subject": "Great location",
+      "comment": "The hotel was in a great location, close to many restaurants and attractions. It was easy to get around and I felt safe walking around the area."
+    },
+    {
+      "date": "04/28/2023 16:45:00",
+      "archived": false,
+      "customer": {
+        "name": "Emma Davis",
+        "phone": "555-444-5555",
+        "email": "emma.davis@example.com"
+      },
+      "id": "C-0007",
+      "subject": "Unresponsive staff",
+      "comment": "I had a problem with my room and tried to contact the front desk multiple times, but no one answered the phone. When I went down to the lobby in person, the staff member was unhelpful and dismissive of my concerns."
+    },
+    {
+      "date": "04/27/2023 11:30:00",
+      "archived": false,
+      "customer": {
+        "name": "Alexandra Lee",
+        "phone": "555-888-9999",
+        "email": "alexandra.lee@example.com"
+      },
+      "id": "C-0008",
+      "subject": "Poor room service",
+      "comment": "I ordered room service and was disappointed to find that the food was cold and unappetizing. When I called to complain, the staff member seemed indifferent to my concerns."
+    },
+    {
+      "date": "04/26/2023 09:00:00",
+      "archived": true,
+      "customer": {
+        "name": "Daniel Wilson",
+        "phone": "555-222-3333",
+        "email": "daniel.wilson@example.com"
+      },
+      "id": "C-0009",
+      "subject": "Spacious room",
+      "comment": "I really enjoyed my stay at this hotel. The room was spacious and well-appointed, with plenty of natural light and comfortable furnishings. The staff were friendly and helpful, and the location was perfect for exploring the city. I would definitely recommend this hotel to others and would stay here again in the future."
+    }
+  ],
+  "rooms": [
+    {
+      "roomType": "Single Bed",
+      "roomNumber": "101",
+      "id": "R-0001",
+      "description": "Cozy room with a single bed and a window facing the city.",
+      "price": 80,
+      "discount": 0,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Air conditioning"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "status": "AVAILABLE"
+    },
+    {
+      "roomType": "Double Bed",
+      "roomNumber": "102",
+      "id": "R-0002",
+      "description": "Spacious room with two double beds and a balcony with sea view.",
+      "price": 120,
+      "discount": 10,
+      "cancellation": "You can cancel up to 48 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "A/C",
+        "Air conditioning",
+        "Safe"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+        "https://images.unsplash.com/photo-1604014237256-11d475e2a2d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1501127122-f385ca6ddd9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+      ],
+      "status": "BOOKED"
+    },
+    {
+      "roomType": "Suite",
+      "roomNumber": "201",
+      "id": "R-0003",
+      "description": "Elegant room with a queen bed, a sitting area, and a view of the garden.",
+      "price": 150,
+      "discount": 20,
+      "cancellation": "You can cancel up to 72 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Mini fridge",
+        "Hair dryer",
+        "Air conditioning",
+        "Bathtub",
+        "Safe"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1580229080435-1c7e2ce835c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+        "https://images.unsplash.com/photo-1600566752229-250ed79470f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2039&q=80"
+      ],
+      "status": "AVAILABLE"
+    },
+    {
+      "roomType": "Double Superior",
+      "roomNumber": "202",
+      "id": "R-0004",
+      "description": "Luxurious room with a king bed, a private terrace, and a whirlpool tub.",
+      "price": 200,
+      "discount": 0,
+      "cancellation": "You can cancel up to 48 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Safe",
+        "Bathtub",
+        "Air conditioning"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1558&q=80"
+      ],
+      "status": "AVAILABLE"
+    },
+    {
+      "roomType": "Suite",
+      "roomNumber": "203",
+      "id": "R-0005",
+      "description": "Comfortable room with two twin beds, a desk, and a view of the mountains.",
+      "price": 100,
+      "discount": 15,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "A/C",
+        "Mini fridge",
+        "Hair dryer"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1580229080435-1c7e2ce835c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+        "https://images.unsplash.com/photo-1600566752229-250ed79470f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2039&q=80"
+      ],
+      "status": "BOOKED"
+    },
+    {
+      "roomType": "Single Bed",
+      "roomNumber": "301",
+      "id": "R-0006",
+      "description": "Basic room with a single bed, a wardrobe, and a small window.",
+      "price": 60,
+      "discount": 0,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "A/C"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "status": "BOOKED"
+    },
+    {
+      "roomType": "Double Bed",
+      "roomNumber": "302",
+      "id": "R-0007",
+      "description": "Spacious room with two double beds and a balcony with sea view.",
+      "price": 110,
+      "discount": 10,
+      "cancellation": "You can cancel up to 48 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "A/C",
+        "Air conditioning",
+        "Safe"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+        "https://images.unsplash.com/photo-1604014237256-11d475e2a2d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1610123172763-1f587473048f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1001&q=80"
+      ],
+      "status": "AVAILABLE"
+    },
+    {
+      "roomType": "Single Bed",
+      "roomNumber": "401",
+      "id": "R-0008",
+      "description": "Cozy room with a single bed and a window facing the city.",
+      "price": 140,
+      "discount": 20,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Air conditioning"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "status": "BOOKED"
+    },
+    {
+      "roomType": "Single Bed",
+      "roomNumber": "101",
+      "id": "R-0009",
+      "description": "Cozy room with a single bed and a window facing the city.",
+      "price": 80,
+      "discount": 0,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Air conditioning"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "status": "AVAILABLE"
+    },
+    {
+      "roomType": "Single Bed",
+      "roomNumber": "101",
+      "id": "R-0010",
+      "description": "Cozy room with a single bed and a window facing the city.",
+      "price": 80,
+      "discount": 0,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Air conditioning"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "status": "AVAILABLE"
+    },
+    {
+      "roomType": "Single Bed",
+      "roomNumber": "101",
+      "id": "R-0011",
+      "description": "Cozy room with a single bed and a window facing the city.",
+      "price": 80,
+      "discount": 0,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Air conditioning"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "status": "AVAILABLE"
+    },
+    {
+      "roomType": "Single Bed",
+      "roomNumber": "101",
+      "id": "R-0012",
+      "description": "Cozy room with a single bed and a window facing the city.",
+      "price": 80,
+      "discount": 0,
+      "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+      "amenities": [
+        "Wi-Fi",
+        "TV",
+        "Air conditioning"
+      ],
+      "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+      ],
+      "status": "AVAILABLE"
+    }
+  ],
+  "users": [
+    {
+      "photo": "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+      "name": "Admin",
+      "id": "U-0001",
+      "position": "Administrator",
+      "email": "admin@admin.com",
+      "phone": "",
+      "startDate": "03/15/1900",
+      "jobDescription": "Dashboard Managing Account",
+      "state": "ACTIVE",
+      "password": "admin"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/men/49.jpg",
+      "name": "John Smith",
+      "position": "Manager",
+      "id": "U-0002",
+      "email": "john.smith@example.com",
+      "phone": "11234567890",
+      "startDate": "03/15/2022",
+      "jobDescription": "Responsible for the hotel's daily management.",
+      "state": "INACTIVE",
+      "password": "6d4d6c4dd4f3b57c51f7d4e36662b087"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/women/14.jpg",
+      "name": "Sarah Johnson",
+      "position": "Receptionist",
+      "id": "U-0003",
+      "email": "sarah.johnson@example.com",
+      "phone": "11234567890",
+      "startDate": "09/01/2021",
+      "jobDescription": "Responsible for greeting guests and checking them in and out of the hotel.",
+      "state": "ACTIVE",
+      "password": "b2c4f63a324ac9d4d8b438b36486eb08"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/women/44.jpg",
+      "name": "Kwong Lee",
+      "position": "Room Service",
+      "id": "U-0004",
+      "email": "david.lee@example.com",
+      "phone": "11234567890",
+      "startDate": "11/15/2021",
+      "jobDescription": "Responsible for delivering food and beverages to guest rooms.",
+      "state": "ACTIVE",
+      "password": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+    },
+    {
+      "photo": "https://cdnstorage.sendbig.com/unreal/female.webp",
+      "name": "Karen Davis",
+      "id": "U-0005",
+      "position": "Manager",
+      "email": "karen.davis@example.com",
+      "phone": "11234567890",
+      "startDate": "01/10/2022",
+      "jobDescription": "Responsible for managing hotel staff and overseeing hotel operations.",
+      "state": "INACTIVE",
+      "password": "c51e86c1c37fb736d108ed2e8b90d7f6"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/men/11.jpg",
+      "name": "Michael Brown",
+      "position": "Receptionist",
+      "id": "U-0006",
+      "email": "michael.brown@example.com",
+      "phone": "11234567890",
+      "startDate": "07/05/2021",
+      "jobDescription": "Responsible for answering phone calls, making reservations, and providing information to guests.",
+      "state": "INACTIVE",
+      "password": "4f81ae0846aebd6a57882f1c6236b00d"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/women/43.jpg",
+      "name": "Jennifer Wilson",
+      "position": "Room Service",
+      "id": "U-0007",
+      "email": "jennifer.wilson@example.com",
+      "phone": "11234567890",
+      "startDate": "02/28/2022",
+      "jobDescription": "Responsible for preparing and delivering food and beverages to guest rooms.",
+      "state": "ACTIVE",
+      "password": "ede880befc8a9d093686f2af609f10cc"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/men/20.jpg",
+      "name": "Daniel Hernandez",
+      "position": "Manager",
+      "id": "U-0008",
+      "email": "daniel.hernandez@example.com",
+      "phone": "11234567890",
+      "startDate": "12/01/2021",
+      "jobDescription": "Responsible for overseeing hotel operations and ensuring guest satisfaction.",
+      "state": "ACTIVE",
+      "password": "1f5d5d11cde6dc62f8cf6985e5b535c5"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/women/62.jpg",
+      "name": "Emily Taylor",
+      "position": "Receptionist",
+      "id": "U-0009",
+      "email": "emily.taylor@example.com",
+      "phone": "11234567890",
+      "startDate": "04/01/2022",
+      "jobDescription": "Responsible for greeting guests, managing reservations, and providing information to guests.",
+      "state": "ACTIVE",
+      "password": "f6c66e37465d1dc29cb06b3cfcdf78e3"
+    },
+    {
+      "photo": "https://randomuser.me/api/portraits/men/56.jpg",
+      "name": "Ryan Patel",
+      "position": "Room Service",
+      "id": "U-0010",
+      "email": "ryan.patel@example.com",
+      "phone": "11234567890",
+      "startDate": "08/20/2021",
+      "jobDescription": "Responsible for delivering food and beverages to guest rooms and ensuring guest satisfaction.",
+      "state": "ACTIVE",
+      "password": "d1e3f8bde337f97900bfbd5ab5cf7f75"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+    {
+        "photo": "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+        "name": "Admin",
+        "id": "U-0001",
+        "position": "Administrator",
+        "email": "admin@admin.com",
+        "phone": "-",
+        "startDate": "1900-03-15",
+        "jobDescription": "Dashboard Managing Account",
+        "state": "ACTIVE",
+        "password": "admin"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/men/49.jpg",
+        "name": "John Smith",
+        "position": "Manager",
+        "id": "U-0002",
+        "email": "john.smith@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2022-03-15",
+        "jobDescription": "Responsible for the hotel's daily management.",
+        "state": "INACTIVE",
+        "password": "6d4d6c4dd4f3b57c51f7d4e36662b087"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/women/14.jpg",
+        "name": "Sarah Johnson",
+        "position": "Receptionist",
+        "id": "U-0003",
+        "email": "sarah.johnson@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2021-09-01",
+        "jobDescription": "Responsible for greeting guests and checking them in and out of the hotel.",
+        "state": "ACTIVE",
+        "password": "b2c4f63a324ac9d4d8b438b36486eb08"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/women/44.jpg",
+        "name": "Kwong Lee",
+        "position": "Room Service",
+        "id": "U-0004",
+        "email": "david.lee@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2021-11-15",
+        "jobDescription": "Responsible for delivering food and beverages to guest rooms.",
+        "state": "ACTIVE",
+        "password": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+    },
+    {
+        "photo": "https://cdnstorage.sendbig.com/unreal/female.webp",
+        "name": "Karen Davis",
+        "id": "U-0005",
+        "position": "Manager",
+        "email": "karen.davis@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2022-01-10",
+        "jobDescription": "Responsible for managing hotel staff and overseeing hotel operations.",
+        "state": "INACTIVE",
+        "password": "c51e86c1c37fb736d108ed2e8b90d7f6"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/men/11.jpg",
+        "name": "Michael Brown",
+        "position": "Receptionist",
+        "id": "U-0006",
+        "email": "michael.brown@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2021-07-05",
+        "jobDescription": "Responsible for answering phone calls, making reservations, and providing information to guests.",
+        "state": "INACTIVE",
+        "password": "4f81ae0846aebd6a57882f1c6236b00d"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/women/43.jpg",
+        "name": "Jennifer Wilson",
+        "position": "Room Service",
+        "id": "U-0007",
+        "email": "jennifer.wilson@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2022-02-28",
+        "jobDescription": "Responsible for preparing and delivering food and beverages to guest rooms.",
+        "state": "ACTIVE",
+        "password": "ede880befc8a9d093686f2af609f10cc"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/men/20.jpg",
+        "name": "Daniel Hernandez",
+        "position": "Manager",
+        "id": "U-0008",
+        "email": "daniel.hernandez@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2021-12-01",
+        "jobDescription": "Responsible for overseeing hotel operations and ensuring guest satisfaction.",
+        "state": "ACTIVE",
+        "password": "1f5d5d11cde6dc62f8cf6985e5b535c5"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/women/62.jpg",
+        "name": "Emily Taylor",
+        "position": "Receptionist",
+        "id": "U-0009",
+        "email": "emily.taylor@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2022-04-01",
+        "jobDescription": "Responsible for greeting guests, managing reservations, and providing information to guests.",
+        "state": "ACTIVE",
+        "password": "f6c66e37465d1dc29cb06b3cfcdf78e3"
+    },
+    {
+        "photo": "https://randomuser.me/api/portraits/men/56.jpg",
+        "name": "Ryan Patel",
+        "position": "Room Service",
+        "id": "U-0010",
+        "email": "ryan.patel@example.com",
+        "phone": "+1 123 456 7890",
+        "startDate": "2021-08-20",
+        "jobDescription": "Responsible for delivering food and beverages to guest rooms and ensuring guest satisfaction.",
+        "state": "ACTIVE",
+        "password": "d1e3f8bde337f97900bfbd5ab5cf7f75"
+    }
+]

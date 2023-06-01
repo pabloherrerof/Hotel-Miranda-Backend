@@ -1,0 +1,110 @@
+[
+    {
+        "date": "2023-05-04T12:30:00.000Z",
+        "archived": true,
+        "customer": {
+            "name": "Ana Garcia",
+            "phone": "555-123-4567",
+            "email": "ana.garcia@example.com"
+        },
+        "id": "C-0001",
+        "subject": "Noisy room",
+        "comment": "My stay at the hotel was not as pleasant as I had hoped due to the constant noise coming from outside my room. It made it difficult to get a good night's sleep."
+    },
+    {
+        "date": "2023-05-03T15:45:00.000Z",
+        "archived": false,
+        "customer": {
+            "name": "John Smith",
+            "phone": "555-987-6543",
+            "email": "john.smith@example.com"
+        },
+        "id": "C-0002",
+        "subject": "Great service",
+        "comment": "I had a wonderful experience at the hotel. The staff were very friendly and helpful, and went out of their way to make sure I had everything I needed. I would definitely stay here again!"
+    },
+    {
+        "date": "2023-05-02T08:00:00.000Z",
+        "archived": true,
+        "customer": {
+            "name": "Emily Brown",
+            "phone": "555-555-5555",
+            "email": "emily.brown@example.com"
+        },
+        "id": "C-0003",
+        "subject": "Clean and comfortable",
+        "comment": "The room was very clean and comfortable, and I appreciated the attention to detail. The hotel overall was well-maintained and had a nice atmosphere."
+    },
+    {
+        "date": "2023-05-01T19:20:00.000Z",
+        "archived": false,
+        "customer": {
+            "name": "David Rodriguez",
+            "phone": "555-111-2222",
+            "email": "david.rodriguez@example.com"
+        },
+        "id": "C-0004",
+        "subject": "Late check-in",
+        "comment": "I arrived at the hotel later than expected, and was disappointed to find that there was no one available at the front desk to check me in. I had to wait for almost an hour before someone finally arrived."
+    },
+    {
+        "date": "2023-04-30T10:15:00.000Z",
+        "archived": false,
+        "customer": {
+            "name": "Sarah Kim",
+            "phone": "555-333-4444",
+            "email": "sarah.kim@example.com"
+        },
+        "id": "C-0005",
+        "subject": "Poor breakfast",
+        "comment": "The breakfast at the hotel was not up to par. The food was cold and tasteless, and there was not much variety to choose from. I would recommend looking elsewhere for breakfast."
+    },
+    {
+        "date": "2023-04-29T13:00:00.000Z",
+        "archived": true,
+        "customer": {
+            "name": "Michael Chen",
+            "phone": "555-777-8888",
+            "email": "michael.chen@example.com"
+        },
+        "id": "C-0006",
+        "subject": "Great location",
+        "comment": "The hotel was in a great location, close to many restaurants and attractions. It was easy to get around and I felt safe walking around the area."
+    },
+    {
+        "date": "2023-04-28T16:45:00.000Z",
+        "archived": false,
+        "customer": {
+            "name": "Emma Davis",
+            "phone": "555-444-5555",
+            "email": "emma.davis@example.com"
+        },
+        "id": "C-0007",
+        "subject": "Unresponsive staff",
+        "comment": "I had a problem with my room and tried to contact the front desk multiple times, but no one answered the phone. When I went down to the lobby in person, the staff member was unhelpful and dismissive of my concerns."
+    },
+    {
+        "date": "2023-04-27T11:30:00.000Z",
+        "archived": false,
+        "customer": {
+            "name": "Alexandra Lee",
+            "phone": "555-888-9999",
+            "email": "alexandra.lee@example.com"
+        },
+        "id": "C-0008",
+        "subject": "Poor room service",
+        "comment": "I ordered room service and was disappointed to find that the food was cold and unappetizing. When I called to complain, the staff member seemed indifferent to my concerns."
+    },
+    {
+        "date": "2023-04-26T09:00:00.000Z",
+        "archived": true,
+        "customer": {
+            "name": "Daniel Wilson",
+            "phone": "555-222-3333",
+            "email": "daniel.wilson@example.com"
+        },
+        "id": "C-0009",
+        "subject": "Spacious room",
+        "comment": "I really enjoyed my stay at this hotel. The room was spacious and well-appointed, with plenty of natural light and comfortable furnishings. The staff were friendly and helpful, and the location was perfect for exploring the city. I would definitely recommend this hotel to others and would stay here again in the future."
+    }
+]

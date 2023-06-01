@@ -1,0 +1,166 @@
+[
+    {
+        "roomType": "Single Bed",
+        "roomNumber": "101",
+        "id": "R-0001",
+        "description": "Cozy room with a single bed and a window facing the city.",
+        "price": 80,
+        "discount": 0,
+        "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+        "amenities": [
+            "Wi-Fi",
+            "TV",
+            "Air conditioning"
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+        ],
+        "status": "AVAILABLE"
+    },
+    {
+        "roomType": "Double Bed",
+        "roomNumber": "102",
+        "id": "R-0002",
+        "description": "Spacious room with two double beds and a balcony with sea view.",
+        "price": 120,
+        "discount": 10,
+        "cancellation": "You can cancel up to 48 hours before check-in without penalty.",
+        "amenities": ["Wi-Fi", "TV", "A/C", "Air conditioning", "Safe"],
+        "thumbnail": "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+            "https://images.unsplash.com/photo-1604014237256-11d475e2a2d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1501127122-f385ca6ddd9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+        ],
+        "status": "BOOKED"
+    },
+    {
+        "roomType": "Suite",
+        "roomNumber": "201",
+        "id": "R-0003",
+        "description": "Elegant room with a queen bed, a sitting area, and a view of the garden.",
+        "price": 150,
+        "discount": 20,
+        "cancellation": "You can cancel up to 72 hours before check-in without penalty.",
+        "amenities": [
+            "Wi-Fi",
+            "TV",
+            "Mini fridge",
+            "Hair dryer",
+            "Air conditioning",
+            "Bathtub",
+            "Safe"
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+            "https://images.unsplash.com/photo-1580229080435-1c7e2ce835c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+            "https://images.unsplash.com/photo-1600566752229-250ed79470f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2039&q=80"
+        ],
+        "status": "AVAILABLE"
+    },
+    {
+        "roomType": "Double Superior",
+        "roomNumber": "202",
+        "id": "R-0004",
+        "description": "Luxurious room with a king bed, a private terrace, and a whirlpool tub.",
+        "price": 200,
+        "discount": 0,
+        "cancellation": "You can cancel up to 48 hours before check-in without penalty.",
+        "amenities": [
+            "Wi-Fi",
+            "TV",
+            "Safe",
+            "Bathtub",
+            "Air conditioning"
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+            "https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
+            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1558&q=80"
+        ],
+        "status": "AVAILABLE"
+    },
+    {
+        "roomType": "Suite",
+        "roomNumber": "203",
+        "id": "R-0005",
+        "description": "Comfortable room with two twin beds, a desk, and a view of the mountains.",
+        "price": 100,
+        "discount": 15,
+        "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+        "amenities": [
+            "Wi-Fi",
+            "TV",
+            "A/C",
+            "Mini fridge",
+            "Hair dryer"
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+            "https://images.unsplash.com/photo-1580229080435-1c7e2ce835c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+            "https://images.unsplash.com/photo-1600566752229-250ed79470f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2039&q=80"
+        ],
+        "status": "BOOKED"
+    },
+    {
+        "roomType": "Single Bed",
+        "roomNumber": "301",
+        "id": "R-0006",
+        "description": "Basic room with a single bed, a wardrobe, and a small window.",
+        "price": 60,
+        "discount": 0,
+        "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+        "amenities": [
+            "Wi-Fi",
+            "TV",
+            "A/C"
+        ],
+        "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+        ],
+        "status": "BOOKED"
+    },
+    {
+        "roomType": "Double Bed",
+        "roomNumber": "302",
+        "id": "R-0007",
+        "description": "Spacious room with two double beds and a balcony with sea view.",
+        "price": 110,
+        "discount": 10,
+        "cancellation": "You can cancel up to 48 hours before check-in without penalty.",
+        "amenities": ["Wi-Fi", "TV", "A/C", "Air conditioning", "Safe"],
+        "thumbnail": "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
+            "https://images.unsplash.com/photo-1604014237256-11d475e2a2d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1610123172763-1f587473048f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1001&q=80"
+        ],
+        "status": "AVAILABLE"
+    },
+    {
+        "roomType": "Single Bed",
+        "roomNumber": "401",
+        "id": "R-0008",
+        "description": "Cozy room with a single bed and a window facing the city.",
+        "price": 140,
+        "discount": 20,
+        "cancellation": "You can cancel up to 24 hours before check-in without penalty.",
+        "amenities": ["Wi-Fi", "TV", "Air conditioning"],
+        "thumbnail": "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        "images": [
+            "https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+        ],
+        "status": "BOOKED"
+    }
+]
