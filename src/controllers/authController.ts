@@ -10,7 +10,7 @@ export const authController = async (req: Request, res: Response, next: NextFunc
   	async (err: Error, user: User, info: any) => {
     	try {
       	if (err || !user) {
-        	const error = new Error('An error occurred.');
+        	const error = new Error(err.message);
         	return next(error);
       	}
 

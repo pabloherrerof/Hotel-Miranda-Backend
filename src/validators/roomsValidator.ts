@@ -40,35 +40,6 @@ export const validateCreateRoom = [
     .notEmpty()
     .withMessage("Discount can't be empty.")
     .withMessage("Discount must be a number and no empty"),
-  check("cancellation")
-    .exists()
-    .withMessage("Cancellation must exists")
-    .notEmpty()
-    .withMessage("Cancellation can't be empty")
-    .isString()
-    .withMessage("Cancellation must be a string."),
-  check("amenities")
-    .exists()
-    .withMessage("Amenities must exists.")
-    .isArray({min: 1})
-    .withMessage("Amenities must be an array with at least 1 instance")
-    .notEmpty()
-    .withMessage("Amenities can't be empty."),
-  check("thumbnail")
-    .exists()
-    .withMessage("Thumbnail must exists.")
-    .notEmpty()
-    .withMessage("Thumbnail can't be empty")
-    .isURL()
-    .withMessage("Thumbnail must be a valid URL.")
-    .withMessage("Thumbnail must be a valid URL and not empty"),
-  check("images")
-    .exists()
-    .withMessage("Images must exists")
-    .notEmpty()
-    .withMessage("Images can't be empty.")
-    .isArray({min: 3})
-    .withMessage("Images must be an array with at least 3 instance"),
 ];
 
 export const validateUpdateRoom = [
@@ -109,44 +80,5 @@ export const validateUpdateRoom = [
     .withMessage("Discount must be smaller than or equal to 100.")
     .notEmpty()
     .withMessage("Discount can't be empty.")
-    .withMessage("Discount must be a number and no empty"),
-  check("cancellation")
-    .exists()
-    .withMessage("Cancellation must exists")
-    .notEmpty()
-    .withMessage("Cancellation can't be empty")
-    .isString()
-    .withMessage("Cancellation must be a string."),
-  check("amenities")
-    .exists()
-    .withMessage("Amenities must exists.")
-    .isArray({min: 1})
-    .withMessage("Amenities must be an array with at least 1 instance")
-    .notEmpty()
-    .withMessage("Amenities can't be empty."),
-  check("thumbnail")
-    .exists()
-    .withMessage("Thumbnail must exists.")
-    .notEmpty()
-    .withMessage("Thumbnail can't be empty")
-    .isURL()
-    .withMessage("Thumbnail must be a valid URL.")
-    .withMessage("Thumbnail must be a valid URL and not empty"),
-  check("images")
-    .exists()
-    .withMessage("Images must exists")
-    .notEmpty()
-    .withMessage("Images can't be empty.")
-    .isArray({min: 3})
-    .withMessage("Images must be an array with at least 3 instance"),
-  check("id")
-    .exists()
-    .notEmpty()
-    .custom(async (value) => {
-      const user = await db.users.find((user) => user.id === value); // Realiza la consulta a la base de datos para verificar la existencia de la habitación
-      if (!user) {
-        throw new Error("The booking does not exists on the database.");
-      }
-      return true;
-    }),
+    .withMessage("Discount must be a number and no empty")
 ];

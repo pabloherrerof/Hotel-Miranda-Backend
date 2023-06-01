@@ -13,14 +13,7 @@ export const validateCreateBooking = [
     check("room")
         .exists().withMessage("Room must exists.")
         .isString().withMessage("Room must be a string.")
-        .notEmpty().withMessage("Room cannot be empty.")
-        .custom(async (value) => {
-            const room = await db.rooms.find((room) => room.id === value); // Realiza la consulta a la base de datos para verificar la existencia de la habitación
-            if (!room) {
-                throw new Error("The room does not exists on the database.");
-            }
-            return true;
-        }),
+        .notEmpty().withMessage("Room cannot be empty."),
     check("checkIn")
         .exists().withMessage("Check in must exists.")
         .notEmpty().withMessage("Check in can't be empty.")
@@ -64,17 +57,6 @@ export const validateUpdateBooking = [
 check("specialRequest")
     .exists().withMessage("Special request must exists.")
     .isString().withMessage("Special Request must be a string"),
-check("room")
-    .exists().withMessage("Room must exists.")
-    .isString().withMessage("Room must be a string.")
-    .notEmpty().withMessage("Room cannot be empty.")
-    .custom(async (value) => {
-        const room = await db.rooms.find((room) => room.id === value); // Realiza la consulta a la base de datos para verificar la existencia de la habitación
-        if (!room) {
-            throw new Error("The room does not exists on the database.");
-        }
-        return true;
-    }),
 check("checkIn")
     .exists().withMessage("Check in must exists.")
     .notEmpty().withMessage("Check in can't be empty.")
@@ -114,16 +96,6 @@ check("checkIn").custom((value, { req }) => {
         throw new Error(
             "The start date must be earlier than or equal to the end date."
         );
-    }
-    return true;
-}),
-check("id")
-    .exists().withMessage("ID must exists.")
-    .notEmpty().withMessage("Id can't be empty.")
-    .custom(async (value) => {
-    const booking = await db.bookings.find((booking) => booking.id === value); // Realiza la consulta a la base de datos para verificar la existencia de la habitación
-    if (!booking) {
-        throw new Error("The booking does not exists on the database.");
     }
     return true;
 })

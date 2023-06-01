@@ -1,7 +1,7 @@
 {
   "bookings": [
     {
-      "name": "Marian",
+      "name": "Maria",
       "id": "B-0001",
       "orderDate": "03/15/2022",
       "checkIn": "03/20/2022",
@@ -216,7 +216,7 @@
       },
       "id": "C-0009",
       "subject": "Spacious room",
-      "comment": "I really enjoyed my stay at this hotel. The room was spacious and well-appointed, with plenty of natural light and comfortable furnishings. The staff were friendly and helpful, and the location was perfect for exploring the city. I would definitely recommend this hotel to others and would stay here again in the future."
+      "comment": "I really enjoyed my stay at this hotel. The room was spacious and well-appointed, with plenty of natural light and comfortable furnishings. The staff were friendly and helpful, and the location was perfect for exploring the city."
     }
   ],
   "rooms": [
@@ -491,7 +491,7 @@
       "id": "U-0001",
       "position": "Administrator",
       "email": "admin@admin.com",
-      "phone": "",
+      "phone": "-",
       "startDate": "03/15/1900",
       "jobDescription": "Dashboard Managing Account",
       "state": "ACTIVE",

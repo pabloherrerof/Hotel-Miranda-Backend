@@ -46,8 +46,6 @@ export const validateCreateUser = [
       return true;
     }),
   check("jobDescription")
-    .exists()
-    .withMessage("Job description must exists")
     .isString()
     .withMessage("Job description must be a string"),
 
@@ -113,12 +111,6 @@ export const validateUpdateUser = [
       }
       return true;
     }),
-  check("jobDescription")
-    .exists()
-    .withMessage("Job description must exists")
-    .isString()
-    .withMessage("Job description must be a string"),
-
   check("state")
     .exists()
     .withMessage("State must exists.")
@@ -132,19 +124,4 @@ export const validateUpdateUser = [
     .withMessage("Password must exists.")
     .isString()
     .withMessage("Password must be a string.")
-    .notEmpty()
-    .withMessage("Password can't be empty.")
-    .isLength({ min: 8 })
-    .withMessage("Password must be at least 8 characters long."),
-
-  check("id")
-    .exists()
-    .notEmpty()
-    .custom(async (value) => {
-      const user = await db.users.find((user) => user.id === value);
-      if (!user) {
-        throw new Error("The booking does not exists on the database.");
-      }
-      return true;
-    }),
 ];

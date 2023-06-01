@@ -1,23 +1,44 @@
-import db from "../database/db.json";
-import { Contact } from "../types/interfaces";
-import { saveToDatabase } from "../database/utils";
 
-export const getContacts = () => {
-    if(!db.contacts || db.contacts.length === 0){
-      throw new Error("Contacts not found!")
-    }
-    return db.contacts;
+import { ResultSetHeader } from "mysql2";
+import { queryDb } from "../database/mysqlConnector";
+import { saveToDatabase } from "../database/utils";
+import { Contact } from "../types/interfaces";
+
+export const getContacts = async () => {
+  try {
+    const query = "SELECT * from contacts";
+
+    return await queryDb(query, null);
+  } catch (e) {
+    throw e;
+  }
   };
 
-  export const toggleArchiveContacts = (updatedInfo: Contact["archived"], contactId: Contact["id"]) => {
-    const indexToUpdate = db.contacts.findIndex((contact) => contact.id === contactId);
-    
- 
- if (indexToUpdate < 0) {
-  throw new Error("Contact not found!");
+  export const getSingleContact = async (contactId: Contact["id"]) => {
+    try {
+      const query = "SELECT * from contacts WHERE id= ?;";
+      const contact = (await queryDb(query, [contactId])) as Contact[];
+  
+      if (contact.length === 0) {
+        throw new Error("Contact not found!");
+      } else {
+        return contact;
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  export const toggleArchiveContacts = async (updatedInfo: Contact["archived"], contactId: Contact["id"]) => {
+try {
+  const query = "UPDATE contacts SET archived=? WHERE id=?";
+  const contactDb = await queryDb(query, [updatedInfo, contactId]) as ResultSetHeader;
+
+  if (contactDb.affectedRows === 0) {
+    throw new Error("Couldn't update the contact.");
+
+  } else return getSingleContact(contactId); 
+} catch (e) {
+  throw e
 }
-    const contactToModify = db.contacts[indexToUpdate]
-    Object.assign(contactToModify, updatedInfo)
-    saveToDatabase(db);
-    return db.contacts[indexToUpdate];
   }

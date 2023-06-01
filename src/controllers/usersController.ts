@@ -1,91 +1,80 @@
 import { Request, Response } from "express";
 import db from "../database/db.json";
 import { User } from "../types/interfaces";
-import {validationResult} from "express-validator";
-import { getUsers, getSingleUser, updateUser, createUser, deleteUser } from "../services/usersServices";
+import { validationResult } from "express-validator";
+import {
+  getUsers,
+  getSingleUser,
+  updateUser,
+  createUser,
+  deleteUser,
+} from "../services/usersServices";
 
-
-export const getUsersController = (req: Request, res: Response) => {
+export const getUsersController = async (req: Request, res: Response) => {
   try {
-    const allUsers = getUsers();
-    res.status(200).send({ status: "OK", data: allUsers });
+    const allUsers = await getUsers();
+    res.status(200).send({ status: "200", data: allUsers });
   } catch (e) {
-    res.status(500).send({ status: "FAILED", e });
+    res.status(500).send({ status: "500", e });
   }
 };
 
-export const getSingleUserController = (req: Request, res: Response) => {
+export const getSingleUserController = async (req: Request, res: Response) => {
   try {
     const userId = req.params["userId"];
 
-    const singleUser = getSingleUser(userId);
-    res.status(200).send({ status: "OK", data: singleUser });
+    const singleUser = await getSingleUser(userId);
+    res.status(200).send({ status: "200", data: singleUser });
   } catch (e: any) {
     console.log(e);
-    res.status(500).send({ status: "FAILED", error: e.message });
+    res.status(500).send({ status: "500", error: e.message });
   }
 };
 
-export const createUserController = (req: Request, res: Response) => {
+export const createUserController = async (req: Request, res: Response) => {
   try {
-    const { photo, name, position, email, phone, startDate, jobDescription, state, password } = req.body;
+    const user = req.body;
     const result = validationResult(req);
-    
+
     if (!result.isEmpty()) {
       res.status(422).json({ errors: result.array() });
       return;
     }
-    
-    if (db && db.users && db.users.length > 0) {
-        const lastUserId = parseInt(db.users[db.users.length - 1].id.slice(2));
-        const newUser : User = {
-            photo: photo,
-            name: name,
-            position: position,
-            id:  "U-" + (lastUserId + 1).toString().padStart(4, "0"),
-            email: email,
-            phone: phone,
-            startDate: startDate,
-            jobDescription: jobDescription,
-            state: state,
-            password: password
-          };
-          const createdUser = createUser(newUser);
-          res.status(201).send({ status: "OK", data: createdUser });
-      } else {
-        throw new Error("There's no data for users in the database.")
-      }
+    const createdUser = await createUser(user);
+    res.status(201).send({ status: "201", data: createdUser });
   } catch (e: any) {
-    res.status(400).send({ status: "FAILED", data: { error: e.message } });
+    res.status(400).send({ status: "400", data: { error: e.message } });
   }
 };
 
-export const updateUserController = (req: Request, res: Response) => {
-  const user = req.body
+export const updateUserController = async (req: Request, res: Response) => {
+  try {
+    const user = req.body;
   const userId = req.params["userId"];
 
   const result = validationResult(req);
-    
+
   if (!result.isEmpty()) {
     res.status(422).json({ errors: result.array() });
     return;
   }
 
-  const updatedUser = updateUser(user, userId);
+  const updatedUser = await updateUser(user, userId);
 
-  res.status(201).send({ status: "OK", data: updatedUser });
-};
-
-export const deleteUserController = (req: Request, res: Response) => {
-  try{
-    const userId = req.params["userId"];
-    
-    const deletedIdUser = deleteUser(userId);
-
-    res.send({ status: "OK", data: {id: deletedIdUser} });
-  } catch(e:any){
-    res.status(400).send({ status: "FAILED", data: { error: e.message } })
+  res.status(201).send({ status: "204", data: updatedUser });
+  } catch (e: any) {
+    res.status(400).send({ status: "400", data: { error: e.message } })
   }
 };
 
+export const deleteUserController = async (req: Request, res: Response) => {
+  try {
+    const userId = req.params["userId"];
 
+    const deletedIdUser = await deleteUser(userId);
+
+    res.send({ status: "200", data: { deletedUserId: deletedIdUser } });
+  } catch (e: any) {
+    res.status(400).send({ status: "400", data: { error: e.message } });
+  }
+};
