@@ -21,7 +21,12 @@ export const validateCreateUser = [
     .exists()
     .withMessage("Position must exists")
     .isString()
-    .withMessage("Position must be a string"),
+    .withMessage("Position must be a string")
+    .custom((value) => {if (value !== 'Manager' && value !== 'Receptionist' && value !== 'Room Service' && value !== 'Administrator') {
+      throw new Error("Position must be equal to Manager, Receptionist, Room Service or Administrator");
+    }
+    return true;
+  }),
   check("email")
     .exists()
     .withMessage("Email must exists")
@@ -55,8 +60,12 @@ export const validateCreateUser = [
     .isString()
     .withMessage("State must be a string.")
     .notEmpty()
-    .withMessage("State can't be empty"),
-
+    .withMessage("State can't be empty")
+    .custom((value) => {if (value !== 'ACTIVE' && value !== 'INACTIVE') {
+      throw new Error("State must be ACTIVE or INACTIVE");
+    }
+    return true;
+  }),
   check("password")
     .exists()
     .withMessage("Password must exists.")
@@ -87,7 +96,12 @@ export const validateUpdateUser = [
     .exists()
     .withMessage("Position must exists")
     .isString()
-    .withMessage("Position must be a string"),
+    .withMessage("Position must be a string")
+    .custom((value) => {if (value !== 'Manager' && value !== 'Receptionist' && value !== 'Room Service' && value !== 'Administrator') {
+      throw new Error("Position must be equal to Manager, Receptionist, Room Service or Administrator");
+    }
+    return true;
+  }),
   check("email")
     .exists()
     .withMessage("Email must exists")
@@ -117,8 +131,12 @@ export const validateUpdateUser = [
     .isString()
     .withMessage("State must be a string.")
     .notEmpty()
-    .withMessage("State can't be empty"),
-
+    .withMessage("State can't be empty")
+    .custom((value) => {if (value !== 'ACTIVE' && value !== 'INACTIVE') {
+      throw new Error("State must be ACTIVE or INACTIVE");
+    }
+    return true;
+  }),
   check("password")
     .exists()
     .withMessage("Password must exists.")

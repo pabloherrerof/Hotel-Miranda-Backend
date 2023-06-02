@@ -7,9 +7,28 @@ import { jobDescriptionChooser } from "./services/usersServices";
 import { roomInfoChooser } from "./services/roomsServices";
 import { hashPassword } from "./middleware/auth";
 
-const InsertJson = async () => {
- await insertFakerUsers(2);
-};
+
+
+
+
+const InsertAll = async () => {
+  await insertJSON();
+  await Promise.all([await insertFaker()]);
+} 
+
+const insertJSON = async ()=> {
+    await insertJsonRooms()
+    await Promise.all([await insertJsonContacts(), await insertJsonUsers(), await insertJsonBookings()])
+}
+
+
+
+
+const insertFaker =async () => {
+  await insertFakerRooms(10);
+  await Promise.all([await insertFakerContacts(10), await insertFakerUsers(10), await insertFakerBookings(10)])
+}
+
 
 const getRandomValue = (arr: any[]) => {
   const indiceAleatorio = Math.floor(Math.random() * arr.length);
@@ -18,8 +37,8 @@ const getRandomValue = (arr: any[]) => {
 
 const insertJsonContacts = async () => {
   const query =
-    "INSERT INTO `contacts` (id, date, customer, archived, subject, comment) VALUES (?, ?, ?, ?, ?, ?)";
-  db.contacts.forEach((element) => {
+    "INSERT INTO `contacts` (id, date, customer, isArchived, subject, comment) VALUES (?, ?, ?, ?, ?, ?)";
+  db.contacts.forEach(async (element) => {
     let contact: any = [
       element.id,
       element.date,
@@ -28,13 +47,13 @@ const insertJsonContacts = async () => {
       element.subject,
       element.comment,
     ];
-    queryDb(query, contact);
+    await queryDb(query, contact);
   });
 };
 
 const insertFakerContacts = async (count: number) => {
   const query =
-    "INSERT INTO `contacts` (id, date, customer, archived, subject, comment) VALUES (?, ?, ?, ?, ?, ?)";
+    "INSERT INTO `contacts` (id, date, customer, isArchived, subject, comment) VALUES (?, ?, ?, ?, ?, ?)";
 
   for (let i = 0; i < count; i++) {
     const lastContact = (await queryDb(
@@ -88,7 +107,7 @@ const insertJsonUsers = async () => {
           element.jobDescription,
           element.position,
         ];
-        queryDb(query, user);
+       queryDb(query, user);
       });
     });
   });
@@ -99,57 +118,48 @@ const insertFakerUsers = async (count: number) => {
     "INSERT INTO `users` (id, photo, name, email, phone, startDate, state, password, jobDescription, position) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
   for (let i = 0; i < count; i++) {
-      let password = faker.internet.password();
-      const saltRounds = 10;
-        
-        const lastUser = (await queryDb(
-          "SELECT id FROM users ORDER BY ID DESC LIMIT 1",
-          null
-        )) as User[];
+    let password = faker.internet.password();
+    const saltRounds = 10;
 
-        if (lastUser.length === 0) {
-          throw Error("Couldn't find users on the database");
-        } else {
-          console.log(lastUser.length)
-          let lastId = parseInt(lastUser[0].id.slice(2));
-          let position = getRandomValue([
-            "Manager",
-            "Receptionist",
-            "Room Service",
-          ]);
-          
+    const lastUser = (await queryDb(
+      "SELECT id FROM users ORDER BY ID DESC LIMIT 1",
+      null
+    )) as User[];
 
-            await queryDb(query, [
-              "U-" + (lastId + 1).toString().padStart(4, "0"),
-              faker.image.avatar(),
-              faker.person.fullName(),
-              faker.internet.email(),
-              faker.phone.number(),
-              new Date(faker.date.past()).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-              }),
-              getRandomValue(["ACTIVE", "INACTIVE"]),
-              await hashPassword(password) as string,
-              jobDescriptionChooser(position),
-              position,
-            ]);
-            ;
-          };
-    
-         
+    if (lastUser.length === 0) {
+      throw Error("Couldn't find users on the database");
+    } else {
+      console.log(lastUser.length);
+      let lastId = parseInt(lastUser[0].id.slice(2));
+      let position = getRandomValue([
+        "Manager",
+        "Receptionist",
+        "Room Service",
+      ]);
 
-        }
+      await queryDb(query, [
+        "U-" + (lastId + 1).toString().padStart(4, "0"),
+        faker.image.avatar(),
+        faker.person.fullName(),
+        faker.internet.email(),
+        faker.phone.number(),
+        new Date(faker.date.past()).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }),
+        getRandomValue(["ACTIVE", "INACTIVE"]),
+        (await hashPassword(password)) as string,
+        jobDescriptionChooser(position),
+        position,
+      ]);
+    }
   }
-;
-
-
-
+};
 const insertJsonRooms = async () => {
   const query =
     "INSERT INTO `rooms` (id, roomType, roomNumber, description, price, discount, cancellation, thumbnail, amenities, images, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-  db.rooms.forEach((element) => {
+  db.rooms.forEach(async (element) => {
     let room: any = [
       element.id,
       element.roomType,
@@ -163,7 +173,7 @@ const insertJsonRooms = async () => {
       JSON.stringify(element.images),
       element.status,
     ];
-    queryDb(query, room);
+    await queryDb(query, room);
   });
 };
 
@@ -208,7 +218,7 @@ const insertFakerRooms = async (count: number) => {
 const insertJsonBookings = async () => {
   const query =
     "INSERT INTO `bookings` (id, name, orderDate, checkIn, checkOut, room, specialRequest) VALUES (?, ?, ?, ?, ?, ?, ?)";
-  db.bookings.forEach((element) => {
+  db.bookings.forEach(async (element) => {
     let booking: any = [
       element.id,
       element.name,
@@ -218,7 +228,7 @@ const insertJsonBookings = async () => {
       element.room,
       element.specialRequest,
     ];
-    queryDb(query, booking);
+    await queryDb(query, booking);
   });
 };
 
@@ -245,21 +255,19 @@ const insertFakerBookings = async (count: number) => {
           day: "2-digit",
         }
       );
-      const checkIn = new Date(
-        faker.date.between({ from: orderDate, to: "03/15/2023" })
-      ).toLocaleDateString("en-US", {
+      const checkIn = new Date(faker.date.soon()).toLocaleDateString("en-US", {
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
       });
       const checkOut = new Date(
-        faker.date.between({ from: checkIn, to: "03/15/2024" })
+        faker.date.soon(getRandomValue([3, 4, 5, 8, 9]))
       ).toLocaleDateString("en-US", {
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
       });
-   
+
       const booking = [
         "B-" + (lastId + 1).toString().padStart(4, "0"),
         faker.person.fullName(),
@@ -274,4 +282,4 @@ const insertFakerBookings = async (count: number) => {
   }
 };
 
-InsertJson();
+InsertAll();

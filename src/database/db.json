@@ -402,7 +402,7 @@
     },
     {
       "roomType": "Single Bed",
-      "roomNumber": "101",
+      "roomNumber": "105",
       "id": "R-0009",
       "description": "Cozy room with a single bed and a window facing the city.",
       "price": 80,
@@ -423,7 +423,7 @@
     },
     {
       "roomType": "Single Bed",
-      "roomNumber": "101",
+      "roomNumber": "107",
       "id": "R-0010",
       "description": "Cozy room with a single bed and a window facing the city.",
       "price": 80,
@@ -443,7 +443,7 @@
     },
     {
       "roomType": "Single Bed",
-      "roomNumber": "101",
+      "roomNumber": "119",
       "id": "R-0011",
       "description": "Cozy room with a single bed and a window facing the city.",
       "price": 80,
@@ -464,7 +464,7 @@
     },
     {
       "roomType": "Single Bed",
-      "roomNumber": "101",
+      "roomNumber": "120",
       "id": "R-0012",
       "description": "Cozy room with a single bed and a window facing the city.",
       "price": 80,

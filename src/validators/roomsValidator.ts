@@ -8,7 +8,12 @@ export const validateCreateRoom = [
     .notEmpty()
     .withMessage("Room Type can't be empty")
     .isString()
-    .withMessage("Room Type must be a string."),
+    .withMessage("Room Type must be a string.")
+    .custom((value) => {if (value !== 'Single Bed' && value !== 'Double Bed' && value !== 'Suite' && value !== 'Double Superior') {
+      throw new Error("RoomType must be equal to Single Bed, Double Bed, Double Superior or Suite");
+    }
+    return true;
+  }),
   check("roomNumber")
     .exists()
     .withMessage("Room Number must exists")
@@ -40,6 +45,18 @@ export const validateCreateRoom = [
     .notEmpty()
     .withMessage("Discount can't be empty.")
     .withMessage("Discount must be a number and no empty"),
+  check("status")
+    .exists()
+    .withMessage("Status must exists")
+    .isString()
+    .withMessage("Status must be a string")
+    .notEmpty()
+    .withMessage("Status cannot be empty")
+    .custom((value) => {if (value !== 'AVAILABLE' && value !== 'BOOKED') {
+      throw new Error("Status must be equal to AVAILABLE or BOOKED");
+    }
+    return true;
+  })
 ];
 
 export const validateUpdateRoom = [
@@ -49,7 +66,12 @@ export const validateUpdateRoom = [
     .notEmpty()
     .withMessage("Room Type can't be empty")
     .isString()
-    .withMessage("Room Type must be a string."),
+    .withMessage("Room Type must be a string.")
+    .custom((value) => {if (value !== 'Single Bed' && value !== 'Double Bed' && value !== 'Suite' && value !== 'Double Superior') {
+      throw new Error("RoomType must be equal to Single Bed, Double Bed, Double Superior or Suite");
+    }
+    return true;
+  }),
   check("roomNumber")
     .exists()
     .withMessage("Room Number must exists")
@@ -80,5 +102,17 @@ export const validateUpdateRoom = [
     .withMessage("Discount must be smaller than or equal to 100.")
     .notEmpty()
     .withMessage("Discount can't be empty.")
-    .withMessage("Discount must be a number and no empty")
+    .withMessage("Discount must be a number and no empty"),
+  check("status")
+    .exists()
+    .withMessage("State must exists")
+    .isString()
+    .withMessage("State must be a string")
+    .notEmpty()
+    .withMessage("State cannot be empty")
+    .custom((value) => {if (value !== 'AVAILABLE' && value !== 'BOOKED') {
+      throw new Error("Status must be equal to AVAILABLE or BOOKED");
+    }
+    return true;
+  })
 ];
