@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-
-import { Room } from "../types/interfaces";
 import { validationResult } from "express-validator";
 import {
   getRooms,
@@ -73,7 +71,7 @@ export const deleteRoomController = async (req: Request, res: Response) => {
 
     const deletedIdRoom = await deleteRoom(roomId);
 
-    res.send({ status: "200", data: { deletedRoomId: deletedIdRoom} });
+    res.send({ status: "200", data: { deletedRoom: deletedIdRoom} });
   } catch (e: any) {
     res.status(400).send({ status: "400", data: { error: e.message } });
   }

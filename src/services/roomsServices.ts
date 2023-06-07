@@ -1,120 +1,114 @@
-import db from "../database/db.json";
-import { Booking, Room } from "../types/interfaces";
-import { saveToDatabase } from "../database/utils";
-import { queryDb, } from "../database/mysqlConnector";
-import { ResultSetHeader } from "mysql2";
+import { connect, disconnect } from "../database/mondoDBConnection";
+import { Room } from "../models/rooms";
+import { IBooking, IRoom } from "../types/interfaces";
+import { jobDescriptionChooser } from "./usersServices";
+
 
 
 export const getRooms = async () => {
   try {
-    const query = "SELECT * from rooms";
+    await connect();
+    let rooms: IRoom[] = await Room.find().exec();
+    await disconnect();
+    if(rooms.length > 0){
+      console.log(rooms)
+      return rooms
+    } else throw new Error("Couldn`t find rooms on the database.")
 
-    return await queryDb(query, null);
   } catch (e) {
     throw e;
   }
 };
 
-export const getSingleRoom = async (roomId: Room["id"]) => {
+export const getSingleRoom = async (roomId: IRoom["id"]) => {
   try {
-    const query = "SELECT * from rooms WHERE id= ?;";
-    const room = (await queryDb(query, [roomId])) as Room[];
-
-    if (room.length === 0) {
-      throw new Error("Room not found!");
-    } else {
-      return room;
-    }
+    await connect();
+      let room = await Room.findOne({ id: roomId }).exec();
+      await disconnect();
+      if (room) {
+        console.log(room);
+        return room;
+      } else
+        throw new Error(
+          `Room with ID ${roomId} could not be found in the database.`
+        );
   } catch (error) {
     throw error;
   }
 };
 
-export const updateRoom = async (updatedRoom: Room, roomId: Room["id"]) => {
+export const updateRoom = async (updatedRoom: IRoom, roomId: IRoom["id"]) => {
   try {
-    const {
-      roomType,
-      roomNumber,
-      description,
-      price,
-      discount,
-      cancellation,
-      amenities,
-      thumbnail,
-      images,
-      status,
-    } = updatedRoom;
+    await connect();
     
-    const query =
-      "UPDATE rooms SET roomType=?, roomNumber=?, description=?, price=?, discount=?, cancellation=?, thumbnail=?, amenities=?, images=?, status=? WHERE id=?";
-
-    const roomDb = await queryDb(query, [
-      roomType,
-      roomNumber,
-      description,
-      price,
-      discount,
-      roomInfoChooser(roomType).cancelattion,
-      roomInfoChooser(roomType).thumbnail,
-      JSON.stringify(roomInfoChooser(roomType).amenities),
-      JSON.stringify(roomInfoChooser(roomType).images),
-      status,
-      roomId
-    ]) as ResultSetHeader;
-
-    if(roomDb.affectedRows === 0){
-      throw new Error("Couldn't create the Room.")
-    } else return getSingleRoom(roomId);
+    updatedRoom.id = roomId;
+    updatedRoom.images = roomInfoChooser(updatedRoom.roomType).images;
+    updatedRoom.thumbnail = roomInfoChooser(updatedRoom.roomType).thumbnail;
+    updatedRoom.amenities = roomInfoChooser(updatedRoom.roomType).amenities;
+    updatedRoom.cancellation = roomInfoChooser(updatedRoom.roomType).cancellation
+    
+    let room = await Room.findOneAndUpdate({id: roomId}, { 
+      $set: updatedRoom }, {new: true}).exec();
+    console.log(room)
+    await disconnect();
+    if (room) {
+      console.log(room);
+      return room;
+    } else
+      throw new Error(
+        `Room with ID ${roomId} could not be found in the database.`
+      );
   } catch (e) {
     throw e;
   }
 };
 
-export const createRoom = async (newRoom: Room) => {
+export const createRoom = async (newRoom: IRoom) => {
   try {
-    const lastRoom = (await queryDb(
-      "SELECT id FROM rooms ORDER BY ID DESC LIMIT 1;",
-      null
-    )) as Room[];
+    await connect()
+    const lastRoom = await Room.findOne().sort({id: -1 }).exec() as IRoom;
+    const lastId = parseInt(lastRoom.id.slice(2))
 
-    if (lastRoom.length === 0) {
+    if (!lastRoom) {
       throw Error("Couldn't find rooms on the database");
     } else {
-      const lastId = parseInt(lastRoom[0].id.slice(2));
-      const id = "R-" + (lastId + 1).toString().padStart(4, "0")
     
-    const roomDb = await queryDb("INSERT INTO rooms (id, roomType, roomNumber, description, price, discount, cancellation, amenities, thumbnail, images, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
-      id,
-      newRoom.roomType,
-      newRoom.roomNumber,
-      newRoom.description,
-      newRoom.price,
-      newRoom.discount,
-      roomInfoChooser(newRoom.roomType).cancelattion,
-      JSON.stringify(roomInfoChooser(newRoom.roomType).amenities),
-      roomInfoChooser(newRoom.roomType).thumbnail,
-      JSON.stringify(roomInfoChooser(newRoom.roomType).images),
-      newRoom.status,
-    ]) as ResultSetHeader;
-      
-    if(roomDb.affectedRows === 0){
-      throw new Error("Couldn't create the Room.")
-    } else return getSingleRoom(id); 
-    } 
+    newRoom.id = "R-" + (lastId + 1).toString().padStart(4, "0");
+    newRoom.images = roomInfoChooser(newRoom.roomType).images;
+    newRoom.thumbnail = roomInfoChooser(newRoom.roomType).thumbnail;
+    newRoom.amenities = roomInfoChooser(newRoom.roomType).amenities;
+    newRoom.cancellation = roomInfoChooser(newRoom.roomType).cancellation
+  
+    
+    const room = new Room(newRoom)
+
+    await room.save().then(() => {
+      console.log("Room saved!");
+    })
+    .catch((error) => {
+      throw new Error("Error saving the room " + error);
+    });
+    console.log(await room);
+    await disconnect();
+    return room;
+}
   } catch (e) {
     throw e;
   }
 };
 
-export const deleteRoom = async (roomId: Room["id"]) => {
+export const deleteRoom = async (roomId: IRoom["id"]) => {
   try {
-    const query = "DELETE FROM rooms WHERE id= ?;";
-    const room = await queryDb(query, [roomId]) as ResultSetHeader ;
-    if(room.affectedRows === 0){
-      throw new Error ("Couldn't delete the room.")
-    } else {
-      return roomId;
-    }
+    await connect();
+    let room = await Room.findOneAndDelete({ id: roomId }).exec();
+    await disconnect();
+    if (room) {
+      console.log(room);
+      return room;
+    } else
+      throw new Error(
+        `Room with ID ${roomId} could not be found in the database.`
+      );
   } catch (e) {
     throw e;
   }
@@ -125,8 +119,7 @@ export const roomInfoChooser = (roomType: string) => {
   switch (roomType) {
     case "Single Bed":
       return {
-        cancelattion:
-          "You can cancel up to 24 hours before check-in without penalty.",
+        cancellation:"You can cancel up to 24 hours before check-in without penalty.",
         amenities: ["Wi-Fi", "TV", "Air conditioning"],
         thumbnail: "https://images.unsplash.com/photo-1619011502686-b512e3989a33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3087&q=80",
         images: [
@@ -137,8 +130,7 @@ export const roomInfoChooser = (roomType: string) => {
       };
     case "Double Bed":
       return {
-        cancelattion:
-          "You can cancel up to 48 hours before check-in without penalty.",
+        cancellation:"You can cancel up to 48 hours before check-in without penalty.",
         amenities: ["Wi-Fi", "TV", "A/C", "Air conditioning", "Safe"],
         thumbnail: "https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=658&q=80",
         images: [
@@ -149,8 +141,7 @@ export const roomInfoChooser = (roomType: string) => {
       };
     case "Double Superior":
       return {
-        cancelattion:
-          "You can cancel up to 72 hours before check-in without penalty.",
+        cancellation:"You can cancel up to 72 hours before check-in without penalty.",
         amenities: ["Wi-Fi", "TV", "Safe", "Bathtub", "Air conditioning"],
         thumbnail: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
         images: [
@@ -161,8 +152,7 @@ export const roomInfoChooser = (roomType: string) => {
       };
     case "Suite":
       return {
-        cancelattion:
-          "You can cancel up to 1 week before check-in without penalty.",
+        cancellation:"You can cancel up to 1 week before check-in without penalty.",
         amenities: [
           "Wi-Fi",
           "TV",
@@ -183,10 +173,10 @@ export const roomInfoChooser = (roomType: string) => {
 
     default:
       return{
-        cancellation: "",
-        amenities: "",
+        cancellation:"",
+        amenities: [""],
         thumbnail: "",
-        images: []
+        images: [""]
       };
   }
 };

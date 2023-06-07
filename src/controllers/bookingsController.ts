@@ -6,8 +6,8 @@ export const getBookingsController = async (req: Request, res: Response) => {
   try {
     const allBookings = await getBookings();
     res.status(200).send({ status: "200", data: allBookings });
-  } catch (e) {
-    res.status(500).send({ status: "500", e });
+  } catch (e: any) {
+    res.status(500).send({ status: "500", error: e.message });
   }
 };
 
@@ -34,6 +34,7 @@ export const createBookingController = async (req: Request, res: Response) => {
     }
     
     const createdBooking = await createBooking(booking);
+    console.log(createdBooking)
     res.status(201).send({ status: "201", data: createdBooking });
       
   } catch (e: any) {
@@ -43,7 +44,7 @@ export const createBookingController = async (req: Request, res: Response) => {
 
 export const updateBookingController = async (req: Request, res: Response) => {
   try{
-    const booking = req.body
+    const booking = req.body;
     const bookingId = req.params["bookingId"];
   
     const result = validationResult(req);
@@ -68,7 +69,7 @@ export const deleteBookingController = async (req: Request, res: Response) => {
     
     const deletedIdBooking = await deleteBooking(bookingId);
 
-    res.send({ status: "200", data: {deletedBookingId: deletedIdBooking} });
+    res.send({ status: "200", data: {deletedBooking: deletedIdBooking} });
   } catch(e:any){
     res.status(400).send({ status: "400", data: { error: e.message } })
   }

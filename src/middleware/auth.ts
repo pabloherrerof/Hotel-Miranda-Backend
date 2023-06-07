@@ -1,55 +1,58 @@
-
-import passport from 'passport';
-import { Strategy as localStrategy } from 'passport-local';
-import { Strategy as JWTstrategy} from 'passport-jwt';
-import {ExtractJwt as ExtractJWT} from 'passport-jwt';
-import "dotenv/config"
-import { queryDb } from '../database/mysqlConnector';
-import { User } from '../types/interfaces';
+import passport from "passport";
+import { Strategy as localStrategy } from "passport-local";
+import { Strategy as JWTstrategy } from "passport-jwt";
+import { ExtractJwt as ExtractJWT } from "passport-jwt";
+import "dotenv/config";
+import { IUser } from "../types/interfaces";
 import bcrypt from "bcrypt";
+import { User } from "../models/users";
+import { connect, disconnect } from "../database/mondoDBConnection";
 
 passport.use(
-  'login',
+  "login",
   new localStrategy(
     {
-        usernameField: 'email',
-        passwordField: 'password'
+      usernameField: "email",
+      passwordField: "password",
     },
     async (email: string, password: string, done) => {
-    try {
-      const user = await queryDb("SELECT * FROM users WHERE email=?", [email]) as User[]
-      if(user.length > 0){
-        let result = await comparePasswords(password, user[0].password);
-        if (result) {
-          console.log('¡Contraseña válida!');
-          return done(null, {email: email});
-        } else {
-          return done(new Error("Invalid password!"), false);
-        }
-    
-    } else return done(new Error("Invalid credentials!"), false);
-    } catch (error: any) {
+      try {
+        await connect();
+        const user = await User.findOne({
+          email: email}).exec();
+          console.log(user);
+        if (user) {
+          let result = await comparePasswords(password, user.password);
+          await disconnect();
+          if (result) {
+            console.log("Valid credentials!");
+            return done(null, { email: email });
+          } else {
+            return done(new Error("Invalid password!"), false);
+          }
+        } else return done(new Error("Invalid credentials!"), false);
+        
+      } catch (error: any) {
         return done(error);
-    }
+      }
     }
   )
 );
 passport.use(
   new JWTstrategy(
     {
-    secretOrKey: process.env.SECRET_KEY,
-    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
+      secretOrKey: process.env.SECRET_KEY,
+      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     },
     async (token, done) => {
-    try {
+      try {
         return done(null, token.user);
-    } catch (error) {
+      } catch (error) {
         done(error);
-    }
+      }
     }
   )
 );
-
 
 export async function hashPassword(password: string): Promise<string> {
   const saltRounds = 10;
@@ -57,12 +60,10 @@ export async function hashPassword(password: string): Promise<string> {
   return hashedPassword;
 }
 
-export async function comparePasswords(password: string, hashedPassword: string): Promise<boolean> {
+export async function comparePasswords(
+  password: string,
+  hashedPassword: string
+): Promise<boolean> {
   const isMatch = await bcrypt.compare(password, hashedPassword);
   return isMatch;
 }
-
-
-
-
-

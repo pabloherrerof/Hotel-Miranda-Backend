@@ -1,43 +1,55 @@
 
-import { ResultSetHeader } from "mysql2";
-import { queryDb } from "../database/mysqlConnector";
-import { saveToDatabase } from "../database/utils";
-import { Contact } from "../types/interfaces";
+
+import { connect, disconnect } from "../database/mondoDBConnection";
+import { Contact } from "../models/contacts";
+import { IContact } from "../types/interfaces";
 
 export const getContacts = async () => {
-  try {
-    const query = "SELECT * from contacts";
-
-    return await queryDb(query, null);
+    try {
+      await connect();
+      let contacts: IContact[] = await Contact.find().exec();
+      await disconnect();
+      if(contacts.length > 0){
+        console.log(contacts)
+        return contacts
+      } else throw new Error("Couldn`t find contacts on the database.");
   } catch (e) {
     throw e;
   }
-  };
-
-  export const getSingleContact = async (contactId: Contact["id"]) => {
-    try {
-      const query = "SELECT * from contacts WHERE id= ?;";
-      const contact = (await queryDb(query, [contactId])) as Contact[];
+}
   
-      if (contact.length === 0) {
-        throw new Error("Contact not found!");
-      } else {
+
+  export const getSingleContact = async (contactId: IContact["id"]) => {
+    try {
+      await connect();
+      let contact = await Contact.findOne({ id: contactId }).exec();
+      await disconnect();
+      if (contact) {
+        console.log(contact);
         return contact;
-      }
+      } else
+        throw new Error(
+          `Contact with ID ${contactId} could not be found in the database.`
+        );
     } catch (error) {
       throw error;
     }
   };
 
-  export const toggleArchiveContacts = async (updatedInfo: Contact["archived"], contactId: Contact["id"]) => {
+  export const toggleArchiveContacts = async (updatedInfo: IContact["archived"], contactId: IContact["id"]) => {
 try {
-  const query = "UPDATE contacts SET archived=? WHERE id=?";
-  const contactDb = await queryDb(query, [updatedInfo, contactId]) as ResultSetHeader;
+  await connect();
 
-  if (contactDb.affectedRows === 0) {
-    throw new Error("Couldn't update the contact.");
+  const contact = await Contact.findOneAndUpdate({id: contactId}, {archived: updatedInfo}, {new: true}).exec();
 
-  } else return getSingleContact(contactId); 
+  if (contact) {
+    console.log(contact);
+    return contact;
+  } else
+    throw new Error(
+      `Contact with ID ${contactId} could not be found in the database.`
+    );
+  
 } catch (e) {
   throw e
 }

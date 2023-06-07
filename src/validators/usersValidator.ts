@@ -50,10 +50,6 @@ export const validateCreateUser = [
       }
       return true;
     }),
-  check("jobDescription")
-    .isString()
-    .withMessage("Job description must be a string"),
-
   check("state")
     .exists()
     .withMessage("State must exists.")
@@ -138,8 +134,9 @@ export const validateUpdateUser = [
     return true;
   }),
   check("password")
-    .exists()
-    .withMessage("Password must exists.")
+    .optional()
     .isString()
     .withMessage("Password must be a string.")
+    .notEmpty()
+    .withMessage("Password can't be empty.")
 ];

@@ -1,4 +1,6 @@
-export interface Booking {
+import { ObjectId } from "mongoose";
+
+export interface IBooking {
     name: string ;
     id: string;
     orderDate: string;
@@ -8,7 +10,7 @@ export interface Booking {
     specialRequest: string;
   }
 
-  export interface User{
+  export interface IUser{
     photo: string;
     name: string;
     id: string;
@@ -21,7 +23,7 @@ export interface Booking {
     position: string;
   }
 
-  export interface Room{
+  export interface IRoom{
     roomType: string;
     roomNumber: string;
     id: string;
@@ -35,16 +37,20 @@ export interface Booking {
     status: string;
   }
 
-  type customer = {
+  export type customer = {
     name: string;
     phone: string;
     email: string;
   }
 
-  export interface Contact {
+  export interface IContact {
     date: string;
     archived: boolean;
-    customer: customer;
+    customer: {
+      name: string;
+      phone: string;
+      email: string;
+    };
     id: string;
     subject: string;
     comment: string;

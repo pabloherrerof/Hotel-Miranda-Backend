@@ -9,6 +9,7 @@ import "./middleware/auth"
 import passport from 'passport';
 import { authRouter } from './routes/authRoutes';
 import "dotenv/config"
+import mongoose from 'mongoose';
 
 
 
@@ -25,6 +26,7 @@ app.use("/api/bookings", passport.authenticate('jwt', { session: false }), booki
 app.use("/api/contacts", passport.authenticate('jwt', { session: false }), contactsRouter);
 app.use("/api/rooms", passport.authenticate('jwt', { session: false }), roomsRouter);
 app.use("/api/users", passport.authenticate('jwt', { session: false }), usersRouter);
+
 
 
 app.listen(port, () => {

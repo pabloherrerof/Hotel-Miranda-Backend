@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "../types/interfaces";
+import { IUser } from "../types/interfaces";
 const passport = require('passport');
 import jwt from "jsonwebtoken"
 require('dotenv').config();
@@ -7,7 +7,7 @@ require('dotenv').config();
 export const authController = async (req: Request, res: Response, next: NextFunction) => {
 	passport.authenticate(
   	'login',
-  	async (err: Error, user: User, info: any) => {
+  	async (err: Error, user: IUser, info: any) => {
     	try {
       	if (err || !user) {
         	const error = new Error(err.message);

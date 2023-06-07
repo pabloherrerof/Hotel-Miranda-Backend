@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import db from "../database/db.json";
-import { User } from "../types/interfaces";
 import { validationResult } from "express-validator";
 import {
   getUsers,
@@ -73,7 +71,7 @@ export const deleteUserController = async (req: Request, res: Response) => {
 
     const deletedIdUser = await deleteUser(userId);
 
-    res.send({ status: "200", data: { deletedUserId: deletedIdUser } });
+    res.send({ status: "200", data: { deletedUser: deletedIdUser } });
   } catch (e: any) {
     res.status(400).send({ status: "400", data: { error: e.message } });
   }

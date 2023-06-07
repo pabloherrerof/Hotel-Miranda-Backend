@@ -1,5 +1,4 @@
-import { NextFunction, Request, Response } from "express";
-import db from "../database/db.json"
+import { Request, Response } from "express";
 import { getContacts, toggleArchiveContacts } from "../services/contactsServices";
 import { validationResult } from "express-validator";
 
