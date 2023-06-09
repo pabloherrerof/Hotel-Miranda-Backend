@@ -28,7 +28,7 @@ const contactSchema = new Schema<IContact>({
         required: true
     }
     
-})
+}, {versionKey: false})
 
 const Contact = model("Contact", contactSchema);
 

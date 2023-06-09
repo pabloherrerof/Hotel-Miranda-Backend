@@ -8,13 +8,14 @@ export const getUsers = async () => {
   try {
     await connect();
     let users: IUser[] = await User.find().exec();
-    await disconnect();
     if (users.length > 0) {
       console.log(users);
       return users;
     } else throw new Error("Couldn`t find users in the database.");
   } catch (e) {
     throw e;
+  } finally {
+    await disconnect();
   }
 };
 
@@ -22,7 +23,6 @@ export const getSingleUser = async (userId: IUser["id"]) => {
   try {
     await connect();
     let user = await User.findOne({ id: userId }).exec();
-    await disconnect();
     if (user) {
       console.log(user);
       return user;
@@ -32,6 +32,8 @@ export const getSingleUser = async (userId: IUser["id"]) => {
       );
   } catch (error) {
     throw error;
+  } finally {
+    await disconnect();
   }
 };
 
@@ -41,17 +43,20 @@ export const updateUser = async (updatedUser: IUser, userId: IUser["id"]) => {
 
     updatedUser.id = userId;
     updatedUser.jobDescription = jobDescriptionChooser(updatedUser.position);
-    
-    if(updatedUser.password){
-      console.log(updatedUser.password)
+
+    if (updatedUser.password) {
+      console.log(updatedUser.password);
       updatedUser.password = await hashPassword(updatedUser.password);
     }
 
-
-    let user = await User.findOneAndUpdate({id: userId}, { 
-      $set: updatedUser }, {new: true}).exec();
-    console.log(user)
-    await disconnect();
+    let user = await User.findOneAndUpdate(
+      { id: userId },
+      {
+        $set: updatedUser,
+      },
+      { new: true }
+    ).exec();
+    console.log(user);
     if (user) {
       console.log(user);
       return user;
@@ -61,37 +66,63 @@ export const updateUser = async (updatedUser: IUser, userId: IUser["id"]) => {
       );
   } catch (e) {
     throw e;
+  } finally {
+    await disconnect();
   }
 };
 
 export const createUser = async (newUser: IUser) => {
   try {
-    await connect()
-    const lastUser = await User.findOne().sort({id: -1 }).exec() as IUser;
-    const lastId = parseInt(lastUser.id.slice(2))
+    await connect();
+    const lastUser = (await User.findOne().sort({ id: -1 }).exec()) as IUser;
+    const lastId = parseInt(lastUser.id.slice(2));
 
     if (!lastUser) {
       throw Error("Couldn't find users on the database");
     } else {
-    let {id, name, photo, password, state, email, phone, startDate, position} = newUser
-    id = "U-" + (lastId + 1).toString().padStart(4, "0");
-    password = await hashPassword(newUser.password);
-    let jobDescription = jobDescriptionChooser(newUser.position)
-    
-    const user = new User({id: id,name: name, password: password, jobDescription: jobDescription, position: position, email: email, state: state, phone: phone, startDate: startDate, photo: photo})
+      let {
+        id,
+        name,
+        photo,
+        password,
+        state,
+        email,
+        phone,
+        startDate,
+        position,
+      } = newUser;
+      id = "U-" + (lastId + 1).toString().padStart(4, "0");
+      password = await hashPassword(newUser.password);
+      let jobDescription = jobDescriptionChooser(newUser.position);
 
-    await user.save().then(() => {
-      console.log("User saved!");
-    })
-    .catch((error) => {
-      throw new Error("Error saving the user " + error);
-    });
-    console.log(await user);
-    await disconnect();
-    return user;
-}
+      const user = new User({
+        id: id,
+        name: name,
+        password: password,
+        jobDescription: jobDescription,
+        position: position,
+        email: email,
+        state: state,
+        phone: phone,
+        startDate: startDate,
+        photo: photo,
+      });
+
+      await user
+        .save()
+        .then(() => {
+          console.log("User saved!");
+        })
+        .catch((error) => {
+          throw new Error("Error saving the user " + error);
+        });
+      console.log(await user);
+      return user;
+    }
   } catch (e) {
     throw e;
+  } finally {
+    await disconnect();
   }
 };
 
@@ -99,7 +130,6 @@ export const deleteUser = async (userId: IUser["id"]) => {
   try {
     await connect();
     let user = await User.findOneAndDelete({ id: userId }).exec();
-    await disconnect();
     if (user) {
       console.log(user);
       return user;
@@ -109,6 +139,8 @@ export const deleteUser = async (userId: IUser["id"]) => {
       );
   } catch (error) {
     throw error;
+  } finally {
+    await disconnect();
   }
 };
 
@@ -119,5 +151,5 @@ export const jobDescriptionChooser = (position: string) => {
     return "Responsible for greeting guests and checking them in and out of the hotel.";
   } else if (position === "Room Service") {
     return "Responsible for preparing and delivering food and beverages to guest rooms.";
-  } else return "";
+  } else return "Administrator";
 };

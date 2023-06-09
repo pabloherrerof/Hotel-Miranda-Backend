@@ -28,7 +28,8 @@ app.use("/api/rooms", passport.authenticate('jwt', { session: false }), roomsRou
 app.use("/api/users", passport.authenticate('jwt', { session: false }), usersRouter);
 
 
-
-app.listen(port, () => {
+export const server = app.listen(port, () => {
     console.log(`🚀 Server running on http://localhost:${port}/`)
 }) 
+
+export default app;

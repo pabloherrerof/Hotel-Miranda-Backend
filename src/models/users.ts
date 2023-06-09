@@ -18,6 +18,7 @@ const userSchema = new Schema<IUser>({
     email:{
         type: String,
         required: true,
+        unique: true,
     },
     phone:{
         type: String,
@@ -44,7 +45,7 @@ const userSchema = new Schema<IUser>({
         type: String,
         required: true,
     },
-})
+}, {versionKey: false})
 
 const User = model("User", userSchema);
 

@@ -31,7 +31,7 @@ const bookingSchema = new Schema<IBooking>({
         type: String,
         required: true
     }
-})
+}, {versionKey: false})
 
 const Booking = model("Booking", bookingSchema);
 

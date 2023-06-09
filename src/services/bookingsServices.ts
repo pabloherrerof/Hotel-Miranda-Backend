@@ -12,7 +12,6 @@ export const getBookings = async () => {
   try {
     await connect();
     let bookings: IBooking[] = await Booking.find().exec();
-    await disconnect();
     if(bookings.length > 0){
       console.log(bookings)
       return bookings
@@ -20,6 +19,8 @@ export const getBookings = async () => {
     
   } catch (e) {
     throw e;
+  } finally{
+    await disconnect();
   }
 };
 
@@ -54,7 +55,6 @@ export const updateBooking = async (
     let booking = await Booking.findOneAndUpdate({id: bookingId}, { 
       $set: updatedBooking }, {new: true}).exec();
     console.log(booking)
-    await disconnect();
     if (booking) {
       console.log(booking);
       return booking;
@@ -65,6 +65,8 @@ export const updateBooking = async (
 
   } catch (e) {
     throw e;
+  } finally{
+    await disconnect();
   }
 };
 
@@ -107,7 +109,6 @@ export const createBooking = async (newbooking: IBooking) => {
     .catch((error) => {
       throw new Error("Error saving the booking");
     });
-    await disconnect();
     return booking;
     } else{
       throw new Error("The room could not be found in the database")
@@ -115,6 +116,8 @@ export const createBooking = async (newbooking: IBooking) => {
 }
   } catch (e) {
     throw e;
+  } finally{
+    await disconnect();
   }
 };
 
@@ -122,7 +125,6 @@ export const deleteBooking = async (bookingId: IBooking["id"]) => {
   try {
     await connect();
     let booking = await Booking.findOneAndDelete({ id: bookingId }).exec();
-    await disconnect();
     if (booking) {
       console.log(booking);
       return booking;
@@ -132,5 +134,7 @@ export const deleteBooking = async (bookingId: IBooking["id"]) => {
       );
   } catch (error) {
     throw error;
+  } finally{
+    await disconnect();
   }
 }; 

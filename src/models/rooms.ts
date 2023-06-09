@@ -51,7 +51,7 @@ const roomSchema = new Schema<IRoom>({
     },
 
     
-})
+}, {versionKey: false})
 
 const Room = model("Room", roomSchema);
 

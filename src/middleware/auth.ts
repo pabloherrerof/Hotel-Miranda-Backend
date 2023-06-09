@@ -20,7 +20,6 @@ passport.use(
         await connect();
         const user = await User.findOne({
           email: email}).exec();
-          console.log(user);
         if (user) {
           let result = await comparePasswords(password, user.password);
           await disconnect();
