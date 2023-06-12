@@ -6,22 +6,18 @@ import { User } from "../models/users";
 
 export const getUsers = async () => {
   try {
-    await connect();
-    let users: IUser[] = await User.find().exec();
+    let users: IUser[] = await User.find().sort({id: 1 }).exec();
     if (users.length > 0) {
       console.log(users);
       return users;
     } else throw new Error("Couldn`t find users in the database.");
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const getSingleUser = async (userId: IUser["id"]) => {
   try {
-    await connect();
     let user = await User.findOne({ id: userId }).exec();
     if (user) {
       console.log(user);
@@ -32,15 +28,11 @@ export const getSingleUser = async (userId: IUser["id"]) => {
       );
   } catch (error) {
     throw error;
-  } finally {
-    await disconnect();
   }
 };
 
 export const updateUser = async (updatedUser: IUser, userId: IUser["id"]) => {
   try {
-    await connect();
-
     updatedUser.id = userId;
     updatedUser.jobDescription = jobDescriptionChooser(updatedUser.position);
 
@@ -66,14 +58,11 @@ export const updateUser = async (updatedUser: IUser, userId: IUser["id"]) => {
       );
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const createUser = async (newUser: IUser) => {
   try {
-    await connect();
     const lastUser = (await User.findOne().sort({ id: -1 }).exec()) as IUser;
     const lastId = parseInt(lastUser.id.slice(2));
 
@@ -121,14 +110,11 @@ export const createUser = async (newUser: IUser) => {
     }
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const deleteUser = async (userId: IUser["id"]) => {
   try {
-    await connect();
     let user = await User.findOneAndDelete({ id: userId }).exec();
     if (user) {
       console.log(user);
@@ -139,9 +125,7 @@ export const deleteUser = async (userId: IUser["id"]) => {
       );
   } catch (error) {
     throw error;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const jobDescriptionChooser = (position: string) => {

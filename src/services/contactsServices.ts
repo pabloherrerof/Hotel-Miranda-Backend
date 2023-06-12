@@ -4,22 +4,18 @@ import { IContact } from "../types/interfaces";
 
 export const getContacts = async () => {
   try {
-    await connect();
-    let contacts: IContact[] = await Contact.find().exec();
+    let contacts: IContact[] = await Contact.find().sort({id: 1 }).exec();
     if (contacts.length > 0) {
       console.log(contacts);
       return contacts;
     } else throw new Error("Couldn`t find contacts on the database.");
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const getSingleContact = async (contactId: IContact["id"]) => {
   try {
-    await connect();
     let contact = await Contact.findOne({ id: contactId }).exec();
     if (contact) {
       console.log(contact);
@@ -30,8 +26,6 @@ export const getSingleContact = async (contactId: IContact["id"]) => {
       );
   } catch (error) {
     throw error;
-  } finally {
-    await disconnect();
   }
 };
 
@@ -40,8 +34,6 @@ export const toggleArchiveContacts = async (
   contactId: IContact["id"]
 ) => {
   try {
-    await connect();
-
     const contact = await Contact.findOneAndUpdate(
       { id: contactId },
       { archived: updatedInfo },
@@ -57,7 +49,5 @@ export const toggleArchiveContacts = async (
       );
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
   }
 };

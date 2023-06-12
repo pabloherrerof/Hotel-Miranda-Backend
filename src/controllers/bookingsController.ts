@@ -5,6 +5,7 @@ import { getBookings, getSingleBooking, updateBooking, createBooking, deleteBook
 export const getBookingsController = async (req: Request, res: Response) => {
   try {
     const allBookings = await getBookings();
+    console.log(allBookings)
     res.status(200).send({ status: "200", data: allBookings });
   } catch (e: any) {
     res.status(500).send({ status: "500", error: e.message });

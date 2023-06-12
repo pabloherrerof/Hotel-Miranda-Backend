@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon ./src/server.ts",
-    "seed": "ts-node ./src/seed.ts",
+    "seed": "ts-node ./src/database/seed.ts",
     "test": "jest"
   },
   

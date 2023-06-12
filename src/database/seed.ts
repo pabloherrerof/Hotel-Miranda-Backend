@@ -1,22 +1,22 @@
 import { faker } from "@faker-js/faker";
-import { IBooking, IContact, IRoom, IUser } from "./types/interfaces";
-import db from "./database/db.json";
-import bcrypt, { hash } from "bcrypt";
-import { jobDescriptionChooser } from "./services/usersServices";
-import { roomInfoChooser } from "./services/roomsServices";
-import { hashPassword } from "./middleware/auth";
-import { Contact } from "./models/contacts";
-import { connect, disconnect } from "./database/mondoDBConnection";
-import { User } from "./models/users";
-import { Room } from "./models/rooms";
-import { Booking } from "./models/booking";
-import mongoose from "mongoose";
+import { IBooking, IContact, IRoom, IUser } from "../types/interfaces";
+import db from "./db.json";
+import bcrypt from "bcrypt";
+import { jobDescriptionChooser } from "../services/usersServices";
+import { roomInfoChooser } from "../services/roomsServices";
+import { hashPassword } from "../middleware/auth";
+import { Contact } from "../models/contacts";
+import { connect, disconnect } from "./mondoDBConnection";
+import { User } from "../models/users";
+import { Room } from "../models/rooms";
+import { Booking } from "../models/booking";
 
 
 const InsertAll = async () => {
   await connect()
   await insertJSON();
   await insertFaker();
+  await disconnect();
 
 };
 

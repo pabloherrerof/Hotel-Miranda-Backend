@@ -17,15 +17,14 @@ passport.use(
     },
     async (email: string, password: string, done) => {
       try {
-        await connect();
         const user = await User.findOne({
           email: email}).exec();
         if (user) {
           let result = await comparePasswords(password, user.password);
-          await disconnect();
+          
           if (result) {
             console.log("Valid credentials!");
-            return done(null, { email: email });
+            return done(null, { id: user.id ,email: email });
           } else {
             return done(new Error("Invalid password!"), false);
           }

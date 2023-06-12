@@ -5,22 +5,18 @@ import { jobDescriptionChooser } from "./usersServices";
 
 export const getRooms = async () => {
   try {
-    await connect();
-    let rooms: IRoom[] = await Room.find().exec();
+    let rooms: IRoom[] = await Room.find().sort({id: 1 }).exec();
     if (rooms.length > 0) {
       console.log(rooms);
       return rooms;
     } else throw new Error("Couldn`t find rooms on the database.");
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
   }
 };
 
 export const getSingleRoom = async (roomId: IRoom["id"]) => {
   try {
-    await connect();
     let room = await Room.findOne({ id: roomId }).exec();
     if (room) {
       console.log(room);
@@ -31,15 +27,11 @@ export const getSingleRoom = async (roomId: IRoom["id"]) => {
       );
   } catch (error) {
     throw error;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const updateRoom = async (updatedRoom: IRoom, roomId: IRoom["id"]) => {
   try {
-    await connect();
-
     updatedRoom.id = roomId;
     updatedRoom.images = roomInfoChooser(updatedRoom.roomType).images;
     updatedRoom.thumbnail = roomInfoChooser(updatedRoom.roomType).thumbnail;
@@ -65,14 +57,11 @@ export const updateRoom = async (updatedRoom: IRoom, roomId: IRoom["id"]) => {
       );
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const createRoom = async (newRoom: IRoom) => {
   try {
-    await connect();
     const lastRoom = (await Room.findOne().sort({ id: -1 }).exec()) as IRoom;
     const lastId = parseInt(lastRoom.id.slice(2));
 
@@ -100,14 +89,11 @@ export const createRoom = async (newRoom: IRoom) => {
     }
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const deleteRoom = async (roomId: IRoom["id"]) => {
   try {
-    await connect();
     let room = await Room.findOneAndDelete({ id: roomId }).exec();
     if (room) {
       console.log(room);
@@ -118,9 +104,7 @@ export const deleteRoom = async (roomId: IRoom["id"]) => {
       );
   } catch (e) {
     throw e;
-  } finally {
-    await disconnect();
-  }
+  } 
 };
 
 export const roomInfoChooser = (roomType: string) => {

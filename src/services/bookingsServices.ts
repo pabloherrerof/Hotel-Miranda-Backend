@@ -10,25 +10,19 @@ import { Room } from "../models/rooms";
 
 export const getBookings = async () => {
   try {
-    await connect();
-    let bookings: IBooking[] = await Booking.find().exec();
+    let bookings: IBooking[] = await Booking.find().sort({id: 1 }).exec();
     if(bookings.length > 0){
-      console.log(bookings)
       return bookings
     } else throw new Error("Couldn`t find bookings on the database.")
     
   } catch (e) {
     throw e;
-  } finally{
-    await disconnect();
   }
 };
 
 export const getSingleBooking = async (bookingId: IBooking["id"]) => {
   try {
-    await connect();
     let booking = await Booking.findOne({ id: bookingId }).exec();
-    await disconnect();
     if (booking) {
       console.log(booking);
       return booking;
@@ -48,7 +42,6 @@ export const updateBooking = async (
 ) => {
   
   try {
-     await connect();
     let {id}  = updatedBooking
     id = bookingId;
 
@@ -65,14 +58,11 @@ export const updateBooking = async (
 
   } catch (e) {
     throw e;
-  } finally{
-    await disconnect();
-  }
+  } 
 };
 
 export const createBooking = async (newbooking: IBooking) => {
   try {
-    await connect()
     const lastBooking = await Booking.findOne().sort({id: -1 }).exec() as IBooking;
     const lastId = parseInt(lastBooking.id.slice(2))
     if (!lastBooking) {
@@ -116,14 +106,11 @@ export const createBooking = async (newbooking: IBooking) => {
 }
   } catch (e) {
     throw e;
-  } finally{
-    await disconnect();
-  }
+  } 
 };
 
 export const deleteBooking = async (bookingId: IBooking["id"]) => {
   try {
-    await connect();
     let booking = await Booking.findOneAndDelete({ id: bookingId }).exec();
     if (booking) {
       console.log(booking);
@@ -134,7 +121,5 @@ export const deleteBooking = async (bookingId: IBooking["id"]) => {
       );
   } catch (error) {
     throw error;
-  } finally{
-    await disconnect();
   }
 }; 

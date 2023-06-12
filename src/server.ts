@@ -12,24 +12,24 @@ import "dotenv/config"
 import mongoose from 'mongoose';
 
 
-
-
 const app = express();
 const port = process.env.PORT;
 
-app.use(cors())
 app.use(bodyParser.json());
 
 
-app.use("/login", authRouter )
-app.use("/api/bookings", passport.authenticate('jwt', { session: false }), bookingsRouter);
-app.use("/api/contacts", passport.authenticate('jwt', { session: false }), contactsRouter);
-app.use("/api/rooms", passport.authenticate('jwt', { session: false }), roomsRouter);
-app.use("/api/users", passport.authenticate('jwt', { session: false }), usersRouter);
+
+app.use("/login", cors(), authRouter )
+app.use("/api/bookings",cors(), passport.authenticate('jwt', { session: false }), bookingsRouter);
+app.use("/api/contacts",cors(), passport.authenticate('jwt', { session: false }), contactsRouter);
+app.use("/api/rooms",cors(), passport.authenticate('jwt', { session: false }), roomsRouter);
+app.use("/api/users",cors(), passport.authenticate('jwt', { session: false }), usersRouter);
+
+mongoose.connect(String(process.env.MONGO_DB));
+
 
 
 export const server = app.listen(port, () => {
     console.log(`🚀 Server running on http://localhost:${port}/`)
 }) 
 
-export default app;

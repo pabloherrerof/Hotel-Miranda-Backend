@@ -21,9 +21,9 @@ export const authController = async (req: Request, res: Response, next: NextFunc
           	if (error) return next(error);
 
           	const body = {id: user.id, email: user.email };
-			
+			console.log(user.id)
 				const token = jwt.sign({ user: body }, process.env.SECRET_KEY!);
-				return res.json({ token });
+				return res.json({token: token, id: user.id});
 			
         	}
       	);
