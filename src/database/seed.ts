@@ -14,7 +14,6 @@ import { Booking } from "../models/booking";
 
 const InsertAll = async () => {
   await connect()
-  await insertJSON();
   await insertFaker();
   await disconnect();
 
@@ -32,7 +31,7 @@ const insertJSON = async () => {
 
 const insertFaker =async () => {
   await insertFakerRooms(5);
-  await Promise.all([await insertFakerContacts(5), await insertFakerUsers(5), await insertFakerBookings(5)])
+  await Promise.all([await insertFakerContacts(5), await insertFakerUsers(10), await insertFakerBookings(5)])
 } 
 
 const getRandomValue = (arr: any[]) => {

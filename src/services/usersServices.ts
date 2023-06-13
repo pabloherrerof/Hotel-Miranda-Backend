@@ -7,8 +7,7 @@ import { User } from "../models/users";
 export const getUsers = async () => {
   try {
     let users: IUser[] = await User.find().sort({id: 1 }).exec();
-    if (users.length > 0) {
-      console.log(users);
+    if (users.length > 0) {;
       return users;
     } else throw new Error("Couldn`t find users in the database.");
   } catch (e) {
@@ -20,7 +19,6 @@ export const getSingleUser = async (userId: IUser["id"]) => {
   try {
     let user = await User.findOne({ id: userId }).exec();
     if (user) {
-      console.log(user);
       return user;
     } else
       throw new Error(
@@ -37,7 +35,6 @@ export const updateUser = async (updatedUser: IUser, userId: IUser["id"]) => {
     updatedUser.jobDescription = jobDescriptionChooser(updatedUser.position);
 
     if (updatedUser.password) {
-      console.log(updatedUser.password);
       updatedUser.password = await hashPassword(updatedUser.password);
     }
 

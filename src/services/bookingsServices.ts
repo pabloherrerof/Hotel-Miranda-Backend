@@ -45,16 +45,22 @@ export const updateBooking = async (
     let {id}  = updatedBooking
     id = bookingId;
 
-    let booking = await Booking.findOneAndUpdate({id: bookingId}, { 
-      $set: updatedBooking }, {new: true}).exec();
-    console.log(booking)
-    if (booking) {
-      console.log(booking);
-      return booking;
-    } else
-      throw new Error(
-        `Booking with ID ${bookingId} could not be found in the database.`
-      );
+    const findRoom = await Room.findOne({id : updatedBooking.room}).exec();
+    if(findRoom){
+      let booking = await Booking.findOneAndUpdate({id: bookingId}, { 
+        $set: updatedBooking }, {new: true}).exec();
+      console.log(booking)
+      if (booking) {
+        console.log(booking);
+        return booking;
+      } else
+        throw new Error(
+          `Booking with ID ${bookingId} could not be found in the database.`
+        );
+    } else  throw new Error(
+      `Room with ID ${updatedBooking.room} could not be found in the database.`
+    )
+    
 
   } catch (e) {
     throw e;
