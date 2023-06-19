@@ -9,7 +9,7 @@ const roomSchema = new Schema<IRoom>({
     },
     roomType:{
         type: String,
-        enum: ["Single Bed", "Double Bed", "Double Superior","Suite"],
+        enum: ["Single Bed", "Double Bed", "Double Superior","Suite", "NO DATA"],
         required: true,
     },
     roomNumber:{
@@ -46,8 +46,7 @@ const roomSchema = new Schema<IRoom>({
     },
     status:{
         type: String,
-        enum: ["AVAILABLE", "BOOKED"],
-        required: true,
+        required: false,
     },
 
     

@@ -9,7 +9,7 @@ export const validateCreateRoom = [
     .withMessage("Room Type can't be empty")
     .isString()
     .withMessage("Room Type must be a string.")
-    .custom((value) => {if (value !== 'Single Bed' && value !== 'Double Bed' && value !== 'Suite' && value !== 'Double Superior') {
+    .custom((value) => {if (value !== 'Single Bed' && value !== 'Double Bed' && value !== 'Suite' && value !== 'Double Superior' && value !== 'NO DATA') {
       throw new Error("RoomType must be equal to Single Bed, Double Bed, Double Superior or Suite");
     }
     return true;
@@ -45,18 +45,6 @@ export const validateCreateRoom = [
     .notEmpty()
     .withMessage("Discount can't be empty.")
     .withMessage("Discount must be a number and no empty"),
-  check("status")
-    .exists()
-    .withMessage("Status must exists")
-    .isString()
-    .withMessage("Status must be a string")
-    .notEmpty()
-    .withMessage("Status cannot be empty")
-    .custom((value) => {if (value !== 'AVAILABLE' && value !== 'BOOKED') {
-      throw new Error("Status must be equal to AVAILABLE or BOOKED");
-    }
-    return true;
-  })
 ];
 
 export const validateUpdateRoom = [
@@ -103,16 +91,4 @@ export const validateUpdateRoom = [
     .notEmpty()
     .withMessage("Discount can't be empty.")
     .withMessage("Discount must be a number and no empty"),
-  check("status")
-    .exists()
-    .withMessage("State must exists")
-    .isString()
-    .withMessage("State must be a string")
-    .notEmpty()
-    .withMessage("State cannot be empty")
-    .custom((value) => {if (value !== 'AVAILABLE' && value !== 'BOOKED') {
-      throw new Error("Status must be equal to AVAILABLE or BOOKED");
-    }
-    return true;
-  })
 ];

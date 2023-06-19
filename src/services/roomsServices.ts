@@ -1,4 +1,5 @@
 import { connect, disconnect } from "../database/mondoDBConnection";
+import { Booking } from "../models/booking";
 import { Room } from "../models/rooms";
 import { IBooking, IRoom } from "../types/interfaces";
 import { jobDescriptionChooser } from "./usersServices";
@@ -47,9 +48,8 @@ export const updateRoom = async (updatedRoom: IRoom, roomId: IRoom["id"]) => {
       },
       { new: true }
     ).exec();
-    console.log(room);
+
     if (room) {
-      console.log(room);
       return room;
     } else
       throw new Error(
@@ -96,7 +96,7 @@ export const deleteRoom = async (roomId: IRoom["id"]) => {
   try {
     let room = await Room.findOneAndDelete({ id: roomId }).exec();
     if (room) {
-      console.log(room);
+      let booking = await Booking.updateMany({room: roomId},  { room: "R-0000"})
       return room;
     } else
       throw new Error(

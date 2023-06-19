@@ -221,6 +221,23 @@
   ],
   "rooms": [
     {
+      "roomType": "NO DATA",
+      "roomNumber": "NO DATA",
+      "id": "R-0000",
+      "description": "NO DATA",
+      "price": 0,
+      "discount": 0,
+      "cancellation": "NO DATA",
+      "amenities": [
+        ""
+      ],
+      "thumbnail": "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg",
+      "images": [
+       ""
+      ],
+      "status": "NO DATA"
+    },
+    {
       "roomType": "Single Bed",
       "roomNumber": "101",
       "id": "R-0001",

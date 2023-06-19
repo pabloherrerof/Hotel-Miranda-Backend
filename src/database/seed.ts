@@ -14,7 +14,8 @@ import { Booking } from "../models/booking";
 
 const InsertAll = async () => {
   await connect()
-  await insertFaker();
+  await insertJSON();
+  await Promise.all([await insertFaker()])
   await disconnect();
 
 };
@@ -30,8 +31,8 @@ const insertJSON = async () => {
 };
 
 const insertFaker =async () => {
-  await insertFakerRooms(5);
-  await Promise.all([await insertFakerContacts(5), await insertFakerUsers(10), await insertFakerBookings(5)])
+  await insertFakerRooms(10);
+  await Promise.all([await insertFakerContacts(10), await insertFakerUsers(10), await insertFakerBookings(10)])
 } 
 
 const getRandomValue = (arr: any[]) => {
@@ -186,7 +187,6 @@ const insertJsonRooms = async () => {
       thumbnail: element.thumbnail,
       amenities: element.amenities,
       images: element.images,
-      status: element.status,
     }).save()
     .then(() => {
       console.log("Room saved!");
@@ -225,7 +225,6 @@ const insertFakerRooms = async (count: number) => {
         thumbnail: roomInfoChooser(roomType).thumbnail,
         amenities: roomInfoChooser(roomType).amenities,
         images: roomInfoChooser(roomType).images,
-        status: getRandomValue(["AVAILABLE", "BOOKED"]),
       }).save()
       .then(() => {
         console.log("Room saved!");
@@ -261,6 +260,7 @@ const insertJsonBookings = async () => {
 
 const insertFakerBookings = async (count: number) => {
   const roomsId = await Room.find({}, 'id');
+  roomsId.filter((room) => room.id !== "R-0000");
 
  for (let i = 0; i < count; i++) {
   const lastBooking = await Booking.findOne().sort({id: -1 }).exec() as IBooking;
