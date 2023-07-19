@@ -1,32 +1,71 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteRoom = exports.updateRoom = exports.createRoom = exports.getSingleRoom = exports.getRooms = void 0;
-const rooms_json_1 = __importDefault(require("../data/rooms.json"));
-const getRooms = (req, res) => {
-    res.send(rooms_json_1.default);
-};
-exports.getRooms = getRooms;
-const getSingleRoom = (req, res) => {
-    const roomId = req.params.roomId;
-    const room = rooms_json_1.default.find(room => room.id === roomId);
-    if (!room) {
-        return res.status(404).send(`Could not find user with id => ${roomId}.`);
+exports.deleteRoomController = exports.updateRoomController = exports.createRoomController = exports.getSingleRoomController = exports.getRoomsController = void 0;
+const express_validator_1 = require("express-validator");
+const roomsServices_1 = require("../services/roomsServices");
+const getRoomsController = async (req, res) => {
+    try {
+        const allRooms = await (0, roomsServices_1.getRooms)();
+        res.status(200).send({ status: "200", data: allRooms });
     }
-    res.send(room);
+    catch (e) {
+        res.status(500).send({ status: "500", e });
+    }
 };
-exports.getSingleRoom = getSingleRoom;
-const createRoom = (req, res) => {
-    res.send("Create room");
+exports.getRoomsController = getRoomsController;
+const getSingleRoomController = async (req, res) => {
+    try {
+        const roomId = req.params["roomId"];
+        const singleRoom = await (0, roomsServices_1.getSingleRoom)(roomId);
+        res.status(200).send({ status: "200", data: singleRoom });
+    }
+    catch (e) {
+        console.log(e);
+        res.status(500).send({ status: "500", error: e.message });
+    }
 };
-exports.createRoom = createRoom;
-const updateRoom = (req, res) => {
-    res.send("Update room");
+exports.getSingleRoomController = getSingleRoomController;
+const createRoomController = async (req, res) => {
+    try {
+        const room = req.body;
+        const result = (0, express_validator_1.validationResult)(req);
+        if (!result.isEmpty()) {
+            res.status(422).json({ errors: result.array() });
+            return;
+        }
+        const createdRoom = await (0, roomsServices_1.createRoom)(room);
+        res.status(201).send({ status: "201", data: createdRoom });
+    }
+    catch (e) {
+        res.status(400).send({ status: "400", data: { error: e.message } });
+    }
 };
-exports.updateRoom = updateRoom;
-const deleteRoom = (req, res) => {
-    res.send("Delete room");
+exports.createRoomController = createRoomController;
+const updateRoomController = async (req, res) => {
+    try {
+        const room = req.body;
+        const roomId = req.params["roomId"];
+        const result = (0, express_validator_1.validationResult)(req);
+        if (!result.isEmpty()) {
+            res.status(422).json({ errors: result.array() });
+            return;
+        }
+        const updatedRoom = await (0, roomsServices_1.updateRoom)(room, roomId);
+        res.status(200).send({ status: "204", data: updatedRoom });
+    }
+    catch (e) {
+        res.status(400).send({ status: "400", data: { error: e.message } });
+    }
 };
-exports.deleteRoom = deleteRoom;
+exports.updateRoomController = updateRoomController;
+const deleteRoomController = async (req, res) => {
+    try {
+        const roomId = req.params["roomId"];
+        const deletedIdRoom = await (0, roomsServices_1.deleteRoom)(roomId);
+        res.send({ status: "200", data: { deletedRoom: deletedIdRoom } });
+    }
+    catch (e) {
+        res.status(400).send({ status: "400", data: { error: e.message } });
+    }
+};
+exports.deleteRoomController = deleteRoomController;

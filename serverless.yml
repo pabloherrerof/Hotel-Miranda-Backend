@@ -1,0 +1,10 @@
+service: Hotel-Miranda-Backend
+provider:
+  name: aws
+  runtime: nodejs18.x
+functions:
+  app:
+    handler: dist/server.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}

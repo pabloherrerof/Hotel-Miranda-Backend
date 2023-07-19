@@ -7,10 +7,10 @@ require('dotenv').config();
 export const authController = async (req: Request, res: Response, next: NextFunction) => {
 	passport.authenticate(
   	'login',
-  	async (err: Error, user: IUser, info: any) => {
+  	async (err: any, user: IUser, info: any) => {
     	try {
       	if (err || !user) {
-        	const error = new Error(err.message);
+        	const error = err ? new Error(err) : new Error('Invalid credentials');
         	return next(error);
       	}
 

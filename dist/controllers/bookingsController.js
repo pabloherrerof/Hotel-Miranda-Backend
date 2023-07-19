@@ -1,33 +1,72 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createBooking = exports.deleteBooking = exports.updateBooking = exports.getSingleBooking = exports.getBookings = void 0;
-const bookings_json_1 = __importDefault(require("../data/bookings.json"));
-const getBookings = (req, res) => {
-    res.send(bookings_json_1.default);
-};
-exports.getBookings = getBookings;
-const getSingleBooking = (req, res) => {
-    const bookingId = req.params.bookingId;
-    const booking = bookings_json_1.default.find(booking => booking.id === bookingId);
-    if (!booking) {
-        return res.status(404).send(`Could not find user with id => ${bookingId}.`);
+exports.deleteBookingController = exports.updateBookingController = exports.createBookingController = exports.getSingleBookingController = exports.getBookingsController = void 0;
+const express_validator_1 = require("express-validator");
+const bookingsServices_1 = require("../services/bookingsServices");
+const getBookingsController = async (req, res) => {
+    try {
+        const allBookings = await (0, bookingsServices_1.getBookings)();
+        console.log(allBookings);
+        res.status(200).send({ status: "200", data: allBookings });
     }
-    res.send(booking);
+    catch (e) {
+        res.status(500).send({ status: "500", error: e.message });
+    }
 };
-exports.getSingleBooking = getSingleBooking;
-const createBooking = (req, res) => {
-    let newBooking = req.body;
-    bookings_json_1.default.push(newBooking);
+exports.getBookingsController = getBookingsController;
+const getSingleBookingController = async (req, res) => {
+    try {
+        const bookingId = req.params["bookingId"];
+        const singleBooking = await (0, bookingsServices_1.getSingleBooking)(bookingId);
+        res.status(200).send({ status: "200", data: singleBooking });
+    }
+    catch (e) {
+        res.status(500).send({ status: "500", error: e.message });
+    }
 };
-exports.createBooking = createBooking;
-const updateBooking = (req, res) => {
-    res.send("Update Booking");
+exports.getSingleBookingController = getSingleBookingController;
+const createBookingController = async (req, res) => {
+    try {
+        const booking = req.body;
+        const result = (0, express_validator_1.validationResult)(req);
+        if (!result.isEmpty()) {
+            res.status(422).send({ errors: result.array() });
+            return;
+        }
+        const createdBooking = await (0, bookingsServices_1.createBooking)(booking);
+        console.log(createdBooking);
+        res.status(201).send({ status: "201", data: createdBooking });
+    }
+    catch (e) {
+        res.status(400).send({ status: "400", data: { error: e.message } });
+    }
 };
-exports.updateBooking = updateBooking;
-const deleteBooking = (req, res) => {
-    res.send("Delete Booking");
+exports.createBookingController = createBookingController;
+const updateBookingController = async (req, res) => {
+    try {
+        const booking = req.body;
+        const bookingId = req.params["bookingId"];
+        const result = (0, express_validator_1.validationResult)(req);
+        if (!result.isEmpty()) {
+            res.status(422).json({ errors: result.array() });
+            return;
+        }
+        const updatedBooking = await (0, bookingsServices_1.updateBooking)(booking, bookingId);
+        res.status(201).send({ status: "204", data: updatedBooking });
+    }
+    catch (e) {
+        res.status(400).send({ status: "400", data: { error: e.message } });
+    }
 };
-exports.deleteBooking = deleteBooking;
+exports.updateBookingController = updateBookingController;
+const deleteBookingController = async (req, res) => {
+    try {
+        const bookingId = req.params["bookingId"];
+        const deletedIdBooking = await (0, bookingsServices_1.deleteBooking)(bookingId);
+        res.send({ status: "200", data: { deletedBooking: deletedIdBooking } });
+    }
+    catch (e) {
+        res.status(400).send({ status: "400", data: { error: e.message } });
+    }
+};
+exports.deleteBookingController = deleteBookingController;

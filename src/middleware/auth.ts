@@ -4,7 +4,7 @@ import { Strategy as JWTstrategy } from "passport-jwt";
 import { ExtractJwt as ExtractJWT } from "passport-jwt";
 import "dotenv/config";
 import { IUser } from "../types/interfaces";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { User } from "../models/users";
 import { connect, disconnect } from "../database/mondoDBConnection";
 
